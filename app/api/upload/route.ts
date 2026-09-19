@@ -15,6 +15,12 @@ const ALLOWED_TYPES: Record<string, string> = {
   'image/webp': 'webp',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xlsx',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'pptx',
+  'application/geo+json': 'geojson',
+  'model/gltf-binary': 'glb',
+  'model/gltf+json': 'gltf',
+  'image/svg+xml': 'svg',
+  'application/zip': 'zip',
   'text/csv': 'csv',
   'text/plain': 'txt',
   'text/html': 'html',
@@ -37,7 +43,15 @@ export async function POST(req: NextRequest) {
     }
 
     const mimeType = file.type || 'application/octet-stream';
-    const fileType = ALLOWED_TYPES[mimeType];
+    const extension = file.name.split('.').pop()?.toLowerCase() || '';
+    const EXTENSION_FALLBACKS: Record<string, string> = {
+      glb: 'glb',
+      gltf: 'gltf',
+      geojson: 'geojson',
+      json: 'json',
+      zip: 'zip',
+    };
+    const fileType = ALLOWED_TYPES[mimeType] || EXTENSION_FALLBACKS[extension];
     if (!fileType) {
       return NextResponse.json({ error: 'Unsupported file type.' }, { status: 415 });
     }
