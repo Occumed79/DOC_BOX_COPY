@@ -3,8 +3,8 @@ services:
     name: source-vault
     runtime: node
     plan: free
-    buildCommand: npm install --legacy-peer-deps && node scripts/migrate.js && npm run build
-    startCommand: node_modules/.bin/next start -p $PORT
+    buildCommand: npm install && npm run migrate && npm run build
+    startCommand: npm start -- -p $PORT
     envVars:
       - key: DATABASE_URL
         sync: false
@@ -22,3 +22,5 @@ services:
         sync: false
       - key: S3_REGION
         sync: false
+      - key: MAX_UPLOAD_MB
+        value: "50"
