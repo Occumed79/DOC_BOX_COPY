@@ -4,10 +4,11 @@ import { searchVault } from '@/lib/search';
 export async function GET(req: NextRequest) {
   const q = new URL(req.url).searchParams.get('q') ?? '';
   if (!q.trim()) return NextResponse.json([]);
+
   try {
-    const results = await searchVault(q);
-    return NextResponse.json(results);
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json(await searchVault(q));
+  } catch (error) {
+    console.error('Vault search failed:', error);
+    return NextResponse.json({ error: 'Search could not be completed.' }, { status: 500 });
   }
 }
