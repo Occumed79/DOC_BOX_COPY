@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "migrate": "node scripts/migrate.js",
+    "check": "tsc --noEmit",
     "build": "next build",
     "start": "next start"
   },
