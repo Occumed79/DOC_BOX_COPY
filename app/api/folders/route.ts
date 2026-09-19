@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const rows = await query(`
       SELECT f.*,
-        (SELECT COUNT(*) FROM sv_files fi WHERE fi.folder_id = f.id AND fi.is_archived = FALSE) AS file_count
+        (SELECT COUNT(*)::int FROM sv_files fi WHERE fi.folder_id = f.id AND fi.is_archived = FALSE) AS file_count
       FROM sv_folders f
       ORDER BY f.parent_id NULLS FIRST, f.name ASC
     `);
