@@ -1831,3 +1831,47 @@ textarea:focus-visible,
 
 }
 
+
+/* ---- live keyframes ---- */
+/* app/styles/overlays.css */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* app/styles/overlays.css */
+@keyframes ambient-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) rotate(-4deg) scale(1); }
+  to { transform: translate3d(2%, 2.5%, 0) rotate(4deg) scale(1.08); }
+}
+
+/* app/styles/overlays.css */
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* app/styles/overlays.css */
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* app/styles/stage.css */
+@keyframes waveTravel { from { transform: translateX(0); } to { transform: translateX(-100vw); } }
+
+/* app/styles/stage.css */
+@keyframes sparkTravel {
+  0% { transform: translate3d(0, 0, 0) scale(.45); opacity: 0; }
+  8% { opacity: .95; }
+  55% { transform: translate3d(115vw, -18px, 0) scale(1.05); opacity: .92; }
+  100% { transform: translate3d(230vw, -34px, 0) scale(.55); opacity: 0; }
+}
+
+/* app/styles/stage.css */
+@keyframes bloomDrift { from { transform: translate3d(-3%, -2%, 0) scale(.9); } to { transform: translate3d(8%, 7%, 0) scale(1.12); } }
+
+/* app/styles/gallery.css */
+@keyframes gallerySkeleton {
+  to { background-position: -220% 0; }
+}
+
