@@ -15,7 +15,6 @@ export interface VaultFile {
   upload_date: string;
   updated_at?: string;
   is_archived: boolean;
-  headline?: string;
 }
 
 export function typeClass(type: string) {
