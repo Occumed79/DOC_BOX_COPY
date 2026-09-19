@@ -12,6 +12,13 @@ const ACCEPTED = {
   'image/webp': ['.webp'],
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'],
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation': ['.pptx'],
+  'application/geo+json': ['.geojson'],
+  'model/gltf-binary': ['.glb'],
+  'model/gltf+json': ['.gltf'],
+  'image/svg+xml': ['.svg'],
+  'application/zip': ['.zip'],
+  'application/octet-stream': ['.glb'],
   'text/csv': ['.csv'],
   'text/plain': ['.txt'],
   'text/html': ['.html', '.htm'],
@@ -49,11 +56,11 @@ function extension(name: string) {
 }
 
 function isImageType(type: string) {
-  return ['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(type.toLowerCase());
+  return ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(type.toLowerCase());
 }
 
 function isTextType(type: string) {
-  return ['txt', 'csv', 'json', 'html', 'htm'].includes(type.toLowerCase());
+  return ['txt', 'csv', 'json', 'geojson', 'gltf', 'html', 'htm'].includes(type.toLowerCase());
 }
 
 function isImageFile(file: File) {

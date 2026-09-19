@@ -6,19 +6,18 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const [database] = await query('SELECT current_database() AS database_name, NOW() AS checked_at');
+    await query('SELECT 1');
     return NextResponse.json({
       ok: true,
-      service: 'docbox',
-      database: database?.database_name || 'connected',
-      checkedAt: database?.checked_at || new Date().toISOString(),
+      service: 'source-vault',
+      checkedAt: new Date().toISOString(),
     });
   } catch (error) {
     console.error('Database health check failed:', error);
     return NextResponse.json({
       ok: false,
-      service: 'docbox',
-      error: error instanceof Error ? error.message : 'Database health check failed.',
+      service: 'source-vault',
+      error: 'Database unavailable.',
     }, { status: 503 });
   }
 }

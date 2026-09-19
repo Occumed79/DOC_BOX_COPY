@@ -15,20 +15,22 @@ export interface VaultFile {
   upload_date: string;
   updated_at?: string;
   is_archived: boolean;
-  headline?: string;
 }
 
 export function typeClass(type: string) {
   const normalized = type.toLowerCase();
-  if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(normalized)) return 'type-image';
+  if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(normalized)) return 'type-image';
 
   const classes: Record<string, string> = {
     pdf: 'type-pdf',
     docx: 'type-document',
+    pptx: 'type-document',
     xlsx: 'type-sheet',
     csv: 'type-sheet',
     txt: 'type-text',
     json: 'type-code',
+    geojson: 'type-code',
+    gltf: 'type-code',
     html: 'type-code',
     htm: 'type-code',
   };
