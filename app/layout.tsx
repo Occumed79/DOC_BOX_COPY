@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import './globals.css';
 import './styles/vault.css';
 import './styles/landing.css';
 import './styles/landing-liquid.css';
