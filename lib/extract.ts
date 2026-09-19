@@ -15,7 +15,9 @@ export async function extractText(
       filename.endsWith('.txt') ||
       filename.endsWith('.csv') ||
       filename.endsWith('.html') ||
-      filename.endsWith('.htm')
+      filename.endsWith('.htm') ||
+      filename.endsWith('.geojson') ||
+      filename.endsWith('.gltf')
     ) {
       return buffer.toString('utf-8').slice(0, 50000);
     }
