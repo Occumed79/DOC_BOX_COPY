@@ -56,11 +56,11 @@ function extension(name: string) {
 }
 
 function isImageType(type: string) {
-  return ['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(type.toLowerCase());
+  return ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(type.toLowerCase());
 }
 
 function isTextType(type: string) {
-  return ['txt', 'csv', 'json', 'html', 'htm'].includes(type.toLowerCase());
+  return ['txt', 'csv', 'json', 'geojson', 'gltf', 'html', 'htm'].includes(type.toLowerCase());
 }
 
 function isImageFile(file: File) {
