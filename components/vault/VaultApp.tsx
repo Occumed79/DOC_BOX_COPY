@@ -266,6 +266,7 @@ export default function VaultApp() {
 
   const handleRemove = useCallback((id: string) => {
     removeCachedFileEverywhere(id);
+    fileViewCache.clear();
     setFiles(previous => previous.filter(file => file.id !== id));
     setSearchResults(previous => previous.filter(file => file.id !== id));
     setSelectedFile(previous => previous?.id === id ? null : previous);
