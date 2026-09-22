@@ -9,6 +9,13 @@ export async function GET(req: NextRequest) {
   if (!rows.length) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
   const file = rows[0];
+
+  if (file.file_type === 'chat' || String(file.storage_url || '').startsWith('pi-chat://')) {
+    const transcript = String(file.extracted_text || '');
+    const url = 'data:text/plain;charset=utf-8,' + encodeURIComponent(transcript);
+    return NextResponse.json({ url, mime_type: 'text/plain', virtual: true, conversation_id: String(file.storage_url || '').replace('pi-chat://', '') });
+  }
+
   // If stored as data URL, return it directly
   if (file.storage_url.startsWith('data:')) {
     return NextResponse.json({ url: file.storage_url, mime_type: file.mime_type });
