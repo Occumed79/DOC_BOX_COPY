@@ -28,6 +28,7 @@ export function typeClass(type: string) {
     xlsx: 'type-sheet',
     csv: 'type-sheet',
     txt: 'type-text',
+    chat: 'type-text',
     json: 'type-code',
     html: 'type-code',
     htm: 'type-code',

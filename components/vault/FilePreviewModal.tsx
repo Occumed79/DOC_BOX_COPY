@@ -64,7 +64,7 @@ export default function FilePreviewModal({ file, onClose, initialUrl = null }: P
   const type = file.file_type.toLowerCase();
   const isImage = ['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(type);
   const isPdf = type === 'pdf';
-  const isText = ['txt', 'csv', 'html', 'htm', 'json'].includes(type);
+  const isText = ['txt', 'csv', 'html', 'htm', 'json', 'chat'].includes(type);
 
   return createPortal(
     <div
@@ -84,7 +84,7 @@ export default function FilePreviewModal({ file, onClose, initialUrl = null }: P
             </div>
           </div>
           <div className="modal-actions">
-            {url && <a className="toolbar-action prominent" href={url} download={file.original_name}>Download</a>}
+            {url && type !== 'chat' && <a className="toolbar-action prominent" href={url} download={file.original_name}>Download</a>}
             <button type="button" className="icon-action" onClick={onClose} aria-label="Close full preview">
               <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="m6 6 12 12M18 6 6 18" />
