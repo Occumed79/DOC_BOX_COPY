@@ -16,8 +16,8 @@ import './styles/landing-liquid.css';
 import './styles/docbox-polish.css';
 
 export const metadata: Metadata = {
-  title: 'DocBox | Occu-Med',
-  description: 'Occu-Med DocBox — a luminous visual workspace for storing, previewing, organizing, and securely sharing documents.',
+  title: 'Chat Library | Occu-Med',
+  description: 'Occu-Med Chat Library — a visual workspace for saved AI conversations and related files.',
 };
 
 export const viewport: Viewport = {
