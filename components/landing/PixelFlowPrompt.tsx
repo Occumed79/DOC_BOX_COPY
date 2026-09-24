@@ -35,8 +35,8 @@ export default function PixelFlowPrompt({ text = 'CLICK TO ENTER' }: { text?: st
       sample.height = height;
       const sctx = sample.getContext('2d');
       if (!sctx) return;
-      scontext.clearRect(0, 0, width, height);
-      scontext.fillStyle = '#fff';
+      sctx.clearRect(0, 0, width, height);
+      sctx.fillStyle = '#fff';
       sctx.textAlign = 'center';
       sctx.textBaseline = 'middle';
       sctx.font = '700 24px -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, sans-serif';
