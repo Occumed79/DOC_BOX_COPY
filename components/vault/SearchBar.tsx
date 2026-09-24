@@ -76,7 +76,7 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
 
   return (
     <div className="search-stack">
-      <div className="search-control control-glass">
+      <div className={`search-control control-glass${query.trim() ? ' search-active' : ''}${loading ? ' search-loading' : ''}`}>
         <span className="search-icon" aria-hidden="true">
           {loading ? (
             <span className="spinner" />
@@ -87,7 +87,7 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
             </svg>
           )}
         </span>
-        <label className="sr-only" htmlFor="vault-search">Search DocBox</label>
+        <label className="sr-only" htmlFor="vault-search">Search Chat Library</label>
         <input
           id="vault-search"
           ref={inputRef}
@@ -123,7 +123,7 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
         </div>
       )}
 
-      <span className="sr-only" aria-live="polite">{loading ? 'Searching DocBox' : ''}</span>
+      <span className="sr-only" aria-live="polite">{loading ? 'Searching Chat Library' : ''}</span>
     </div>
   );
 }
