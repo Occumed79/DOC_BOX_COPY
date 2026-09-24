@@ -228,8 +228,8 @@ export default function FileGallery({
         ) : queued.length === 0 ? (
           <div className="gallery-empty-state">
             <div className="gallery-empty-stack" aria-hidden="true"><span /><span /><span /></div>
-            <h2>Your DocBox is empty</h2>
-            <p>Drop files anywhere in this area or use Add Files above.</p>
+            <h2>Your library is empty</h2>
+            <p>Saved conversations and uploaded files will appear here.</p>
           </div>
         ) : null}
       </section>
