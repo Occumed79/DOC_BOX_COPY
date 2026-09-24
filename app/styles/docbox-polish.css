@@ -83,3 +83,211 @@
     display: none;
   }
 }
+
+
+/* 2026 cinematic Chat Library treatment */
+.docbox-vault-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #17151e;
+  --vault-lilac: #ba9df0;
+  --vault-pink: #e9a6d4;
+  --vault-yellow: #f5dfa1;
+  --vault-mint: #b9e4c7;
+  --vault-blue: #acccec;
+  --vault-ink: #1a1821;
+}
+
+.vault-video-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  filter: saturate(0.92) brightness(0.72) contrast(0.94);
+}
+
+.docbox-vault-shell .luminous-backdrop {
+  z-index: 1;
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
+}
+
+.docbox-vault-shell .cosmic-vault-ui {
+  position: relative;
+  z-index: 2;
+}
+
+.docbox-vault-shell .cosmic-command-bar,
+.docbox-vault-shell .cosmic-folder-dock,
+.docbox-vault-shell .file-preview-tile,
+.docbox-vault-shell .vault-gallery-shell,
+.docbox-vault-shell .vault-inspector,
+.docbox-vault-shell .file-preview-modal,
+.docbox-vault-shell .gallery-empty-state {
+  border-color: rgba(255,255,255,.34) !important;
+  background:
+    linear-gradient(145deg, rgba(33,27,42,.68), rgba(24,27,38,.48)),
+    linear-gradient(90deg, rgba(186,157,240,.10), rgba(245,223,161,.08), rgba(172,204,236,.10)) !important;
+  backdrop-filter: blur(25px) saturate(128%);
+  -webkit-backdrop-filter: blur(25px) saturate(128%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    0 22px 70px rgba(32,22,42,.24),
+    0 0 34px rgba(186,157,240,.08);
+}
+
+.docbox-vault-shell .docbox-brand strong,
+.docbox-vault-shell .view-heading h1 {
+  color: rgba(255,255,255,.95);
+}
+
+.docbox-vault-shell .docbox-brand small,
+.docbox-vault-shell .view-heading p,
+.docbox-vault-shell .view-heading span {
+  color: rgba(255,255,255,.54);
+}
+
+/* Metal-button language inspired by Cult UI's animated metal ring. */
+.docbox-vault-shell button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.docbox-vault-shell button:not(:disabled)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 1px;
+  pointer-events: none;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 135deg,
+    rgba(255,255,255,.20),
+    rgba(186,157,240,.82),
+    rgba(245,223,161,.94),
+    rgba(233,166,212,.78),
+    rgba(172,204,236,.86),
+    rgba(255,255,255,.22)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .42;
+  transition: opacity 180ms ease, filter 220ms ease;
+}
+
+.docbox-vault-shell button:not(:disabled)::after {
+  content: "";
+  position: absolute;
+  inset: -70% -35%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.18) 45%, rgba(245,223,161,.12) 50%, transparent 65%);
+  transform: translateX(-55%) rotate(8deg);
+  transition: transform 640ms cubic-bezier(.2,.72,.2,1), opacity 200ms ease;
+  opacity: .28;
+}
+
+.docbox-vault-shell button:not(:disabled):hover::before,
+.docbox-vault-shell button:not(:disabled):focus-visible::before {
+  opacity: .92;
+  filter: drop-shadow(0 0 9px rgba(245,223,161,.22)) drop-shadow(0 0 15px rgba(186,157,240,.18));
+}
+
+.docbox-vault-shell button:not(:disabled):hover::after,
+.docbox-vault-shell button:not(:disabled):focus-visible::after {
+  transform: translateX(62%) rotate(8deg);
+  opacity: .72;
+}
+
+.docbox-vault-shell .cosmic-upload-button,
+.docbox-vault-shell .gallery-upload-action,
+.docbox-vault-shell .cosmic-location-pill.active {
+  color: #24202b !important;
+  background: linear-gradient(135deg, rgba(245,223,161,.92), rgba(233,166,212,.82), rgba(186,157,240,.86)) !important;
+  border-color: rgba(255,255,255,.56) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.7),
+    0 12px 34px rgba(186,157,240,.18),
+    0 0 22px rgba(245,223,161,.15) !important;
+}
+
+/* Yellow-purple neon search animation while a real query is active. */
+.docbox-vault-shell .search-control {
+  position: relative;
+  overflow: visible;
+  background: rgba(22,20,29,.64) !important;
+  border-color: rgba(255,255,255,.26) !important;
+}
+
+.docbox-vault-shell .search-control.search-active::before,
+.docbox-vault-shell .search-control.search-loading::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 2px;
+  background:
+    conic-gradient(
+      from var(--neon-turn, 0deg),
+      rgba(245,223,161,.98),
+      rgba(230,190,86,.78),
+      rgba(186,157,240,.98),
+      rgba(119,74,204,.88),
+      rgba(233,166,212,.82),
+      rgba(245,223,161,.98)
+    );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: vault-neon-spin 2.8s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(245,223,161,.48)) drop-shadow(0 0 18px rgba(186,157,240,.38));
+}
+
+.docbox-vault-shell .search-control.search-active {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18),
+    0 0 26px rgba(245,223,161,.18),
+    0 0 46px rgba(186,157,240,.16) !important;
+}
+
+@keyframes vault-neon-spin {
+  to { --neon-turn: 360deg; }
+}
+
+/* Pixel-flow prompt under the original landing artwork. */
+.landing-pixel-prompt {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  bottom: clamp(7%, 9vh, 12%);
+  width: min(560px, 76vw);
+  height: 88px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 0 9px rgba(255,255,255,.30));
+}
+
+.landing-pixel-prompt canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vault-video-background { display: none; }
+  .docbox-vault-shell { background: linear-gradient(135deg, #756481, #b8a99d 40%, #718095); }
+  .docbox-vault-shell button::after,
+  .docbox-vault-shell .search-control.search-active::before,
+  .docbox-vault-shell .search-control.search-loading::before {
+    animation: none !important;
+  }
+}
