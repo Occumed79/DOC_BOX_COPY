@@ -36,6 +36,8 @@
   object-fit: cover;
   object-position: center;
   transform: scale(1.002);
+  display: block;
+  pointer-events: none;
 }
 
 .landing-circuit-glow,
