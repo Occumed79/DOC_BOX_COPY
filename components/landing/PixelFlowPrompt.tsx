@@ -10,6 +10,8 @@ export default function PixelFlowPrompt({ text = 'CLICK TO ENTER' }: { text?: st
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const canvasElement = canvas;
+    const context = ctx;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let frame = 0;
@@ -19,22 +21,22 @@ export default function PixelFlowPrompt({ text = 'CLICK TO ENTER' }: { text?: st
     let particles: Array<{ x:number; y:number; tx:number; ty:number; vx:number; vy:number; phase:number; size:number; alpha:number }> = [];
 
     function build() {
-      const rect = canvas.getBoundingClientRect();
+      const rect = canvasElement.getBoundingClientRect();
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       width = Math.max(320, Math.floor(rect.width));
       height = Math.max(78, Math.floor(rect.height));
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, width, height);
+      canvasElement.width = Math.floor(width * dpr);
+      canvasElement.height = Math.floor(height * dpr);
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      context.clearRect(0, 0, width, height);
 
       const sample = document.createElement('canvas');
       sample.width = width;
       sample.height = height;
       const sctx = sample.getContext('2d');
       if (!sctx) return;
-      sctx.clearRect(0, 0, width, height);
-      sctx.fillStyle = '#fff';
+      scontext.clearRect(0, 0, width, height);
+      scontext.fillStyle = '#fff';
       sctx.textAlign = 'center';
       sctx.textBaseline = 'middle';
       sctx.font = '700 24px -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, sans-serif';
@@ -67,7 +69,7 @@ export default function PixelFlowPrompt({ text = 'CLICK TO ENTER' }: { text?: st
 
     function draw() {
       frame += 1;
-      ctx.clearRect(0, 0, width, height);
+      context.clearRect(0, 0, width, height);
       const settle = reduceMotion ? 1 : Math.min(1, frame / 130);
 
       for (const p of particles) {
@@ -81,8 +83,8 @@ export default function PixelFlowPrompt({ text = 'CLICK TO ENTER' }: { text?: st
         p.y += p.vy;
 
         const pulse = reduceMotion ? 1 : 0.76 + Math.sin(frame * 0.035 + p.phase) * 0.24;
-        ctx.fillStyle = `rgba(255,255,255,${p.alpha * pulse})`;
-        ctx.fillRect(p.x, p.y, p.size, p.size);
+        context.fillStyle = `rgba(255,255,255,${p.alpha * pulse})`;
+        context.fillRect(p.x, p.y, p.size, p.size);
       }
 
       if (!reduceMotion) raf = requestAnimationFrame(draw);
@@ -95,7 +97,7 @@ export default function PixelFlowPrompt({ text = 'CLICK TO ENTER' }: { text?: st
       build();
       if (reduceMotion) draw();
     });
-    observer.observe(canvas);
+    observer.observe(canvasElement);
 
     return () => {
       cancelAnimationFrame(raf);
