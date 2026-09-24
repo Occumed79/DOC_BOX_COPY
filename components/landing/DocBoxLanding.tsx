@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
+import PixelFlowPrompt from './PixelFlowPrompt';
 import { useRouter } from 'next/navigation';
 
-const LANDING_VIDEO = 'https://pi-chat-library-assets.floot.app/_cdn/static/2d10efaf-a976-40ba-939c-97b30f6db513-page4-background.mp4';
-const LANDING_POSTER = 'https://pi-chat-library-assets.floot.app/_cdn/static/9846949d-202f-47f3-b13b-719a4202876b-page4-background-poster.jpg';
+const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
@@ -99,12 +99,13 @@ export default function DocBoxLanding() {
         loop
         playsInline
         preload="auto"
-        poster={LANDING_POSTER}
         aria-hidden="true"
         tabIndex={-1}
       >
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
+
+      <PixelFlowPrompt text="CLICK TO ENTER" />
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
