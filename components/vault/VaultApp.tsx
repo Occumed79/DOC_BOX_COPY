@@ -278,6 +278,18 @@ export default function VaultApp() {
 
   return (
     <div className="cosmic-vault-shell abyssal-vault-shell docbox-vault-shell">
+      <video
+        className="vault-video-background"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="https://pi-chat-library-assets.floot.app/_cdn/static/9846949d-202f-47f3-b13b-719a4202876b-page4-background-poster.jpg"
+        aria-hidden="true"
+      >
+        <source src="https://pi-chat-library-assets.floot.app/_cdn/static/2d10efaf-a976-40ba-939c-97b30f6db513-page4-background.mp4" type="video/mp4" />
+      </video>
       <LuminousBackdrop />
 
       <div className="cosmic-vault-ui">
