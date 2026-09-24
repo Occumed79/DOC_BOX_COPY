@@ -3,7 +3,8 @@
 import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
-const LANDING_ART = '/chat-library-background.png';
+const LANDING_VIDEO = 'https://pi-chat-library-assets.floot.app/_cdn/static/2d10efaf-a976-40ba-939c-97b30f6db513-page4-background.mp4';
+const LANDING_POSTER = 'https://pi-chat-library-assets.floot.app/_cdn/static/9846949d-202f-47f3-b13b-719a4202876b-page4-background-poster.jpg';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
@@ -91,13 +92,19 @@ export default function DocBoxLanding() {
       onClick={enterVault}
       onKeyDown={handleKeyDown}
     >
-      <img
+      <video
         className="docbox-landing-art"
-        src={LANDING_ART}
-        alt=""
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster={LANDING_POSTER}
         aria-hidden="true"
-        onError={event => { event.currentTarget.style.display = 'none'; }}
-      />
+        tabIndex={-1}
+      >
+        <source src={LANDING_VIDEO} type="video/mp4" />
+      </video>
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
