@@ -1,10 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
-const LANDING_ART = '/docbox-landing.png?v=20260719-0942';
+const LANDING_ART = '/chat-library-background.png';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
@@ -88,18 +87,16 @@ export default function DocBoxLanding() {
       className="docbox-landing"
       role="button"
       tabIndex={0}
-      aria-label="Enter Occu-Med DocBox"
+      aria-label="Enter Occu-Med Chat Library"
       onClick={enterVault}
       onKeyDown={handleKeyDown}
     >
-      <Image
+      <img
         className="docbox-landing-art"
         src={LANDING_ART}
         alt=""
         aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
+        onError={event => { event.currentTarget.style.display = 'none'; }}
       />
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />

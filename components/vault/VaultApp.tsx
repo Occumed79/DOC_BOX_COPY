@@ -283,19 +283,19 @@ export default function VaultApp() {
       <div className="cosmic-vault-ui">
         <header className="cosmic-command-stack">
           <div className="cosmic-command-bar">
-            <Link href="/" className="cosmic-brand docbox-brand" aria-label="Return to DocBox landing page">
+            <Link href="/" className="cosmic-brand docbox-brand" aria-label="Return to Chat Library landing page">
               {logoAvailable && (
                 <span className="docbox-header-logo" aria-hidden="true">
                   <img src="/occu-med-logo.png" alt="" onError={() => setLogoAvailable(false)} />
                 </span>
               )}
-              <span><strong>DocBox</strong><small>Occu-Med document workspace</small></span>
+              <span><strong>Chat Library</strong><small>Occu-Med saved conversation workspace</small></span>
             </Link>
             <div className="cosmic-search"><SearchBar onResults={handleSearchResults} onClear={handleSearchClear} onError={reportError} /></div>
             <button type="button" className="cosmic-upload-button" onClick={openUpload}><UploadIcon /><span>Add Files</span></button>
           </div>
 
-          <div className="cosmic-folder-dock" aria-label="DocBox locations">
+          <div className="cosmic-folder-dock" aria-label="Chat Library locations">
             <div className="cosmic-folder-scroll">
               <button
                 type="button"
