@@ -291,3 +291,10 @@
     animation: none !important;
   }
 }
+
+
+@property --neon-turn {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
