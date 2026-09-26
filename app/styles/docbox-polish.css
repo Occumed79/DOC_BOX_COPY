@@ -272,7 +272,7 @@
   width: min(560px, 76vw);
   height: 88px;
   transform: translateX(-50%);
-  pointer-events: none;
+  pointer-events: auto;
   filter: drop-shadow(0 0 9px rgba(255,255,255,.30));
 }
 
