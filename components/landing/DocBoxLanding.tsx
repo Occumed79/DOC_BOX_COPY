@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
-import PixelFlowPrompt from './PixelFlowPrompt';
+import PixelFlowField from '../smoothui/PixelFlowField';
 import { useRouter } from 'next/navigation';
 
 const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
@@ -105,7 +105,19 @@ export default function DocBoxLanding() {
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
 
-      <PixelFlowPrompt text="CLICK TO ENTER" />
+      <PixelFlowField
+        className="landing-pixel-prompt"
+        text="CLICK TO ENTER"
+        cellSize={7}
+        gap={3}
+        speed={1}
+        scatter={1}
+        pointerRadius={130}
+        pointerStrength={1}
+        shape="square"
+        colors={["#9aa0a8", "#ffffff", "#ffffff"]}
+        weight={800}
+      />
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
