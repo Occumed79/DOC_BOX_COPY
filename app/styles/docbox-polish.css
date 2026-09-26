@@ -360,3 +360,131 @@
 .docbox-vault-shell .stored-gallery-section {
   background: transparent !important;
 }
+
+
+/* Exact-source effect integration: real metal-fx + Inspira NeonBorder. */
+.docbox-vault-shell button::before,
+.docbox-vault-shell button::after {
+  content: none !important;
+}
+
+.doc-metal-fx {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: visible !important;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.doc-metal-fx.w-full {
+  display: flex;
+  width: 100%;
+}
+
+.doc-metal-fx.flex-1 {
+  flex: 1 1 0%;
+}
+
+.doc-metal-fx::before {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+  pointer-events: none;
+  content: "";
+}
+
+.doc-metal-fx > button {
+  position: relative;
+  z-index: 1;
+}
+
+.search-neon-shell {
+  position: relative;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 1px;
+}
+
+.search-neon-shell > .search-control {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.neon-border-one,
+.neon-border-two {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.neon-border-one {
+  filter: blur(1px) drop-shadow(0 0 12px var(--neon-border-color-1));
+}
+
+.neon-border-one::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--neon-border-width);
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--neon-border-color-1),
+    var(--neon-border-color-1),
+    transparent,
+    transparent
+  );
+  content: "";
+}
+
+.neon-border-two {
+  filter: blur(1px) drop-shadow(0 0 12px var(--neon-border-color-2));
+}
+
+.neon-border-two::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--neon-border-width);
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    transparent,
+    var(--neon-border-color-2),
+    var(--neon-border-color-2)
+  );
+  content: "";
+}
+
+.animate-neon-border {
+  animation: neon-border var(--neon-border-duration) linear infinite;
+}
+
+@keyframes neon-border {
+  0% { transform: rotate(0deg) scale(2.5); }
+  100% { transform: rotate(360deg) scale(2.5); }
+}
+
+/* Disable the earlier approximation now that the exact component is mounted. */
+.docbox-vault-shell .search-control.search-active::before,
+.docbox-vault-shell .search-control.search-loading::before {
+  content: none !important;
+}
