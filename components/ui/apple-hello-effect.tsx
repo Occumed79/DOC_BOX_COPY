@@ -70,4 +70,70 @@ function AppleHelloEnglishEffect({
   );
 }
 
-export { AppleHelloEnglishEffect };
+function AppleClickToEnterEffect({
+  className,
+  speed = 1,
+  onAnimationComplete,
+  ...props
+}: Props) {
+  const calc = (x: number) => x * speed;
+
+  return (
+    <motion.svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 638 120"
+      fill="none"
+      stroke="currentColor"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      {...props}
+    >
+      <title>Click to enter</title>
+      <motion.text
+        x="319"
+        y="78"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontFamily='"Snell Roundhand","Segoe Script","Brush Script MT",cursive'
+        fontSize="62"
+        fontWeight="400"
+        letterSpacing="0"
+        strokeWidth="2.35"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="transparent"
+        strokeDasharray="1500"
+        initial={{ strokeDashoffset: 1500, opacity: 0 }}
+        animate={{ strokeDashoffset: 0, opacity: 1 }}
+        transition={{
+          duration: calc(2.3),
+          ease: "easeInOut",
+          delay: calc(3.45),
+          opacity: { duration: calc(0.35), delay: calc(3.45) },
+        }}
+        onAnimationComplete={onAnimationComplete}
+      >
+        Click to enter
+      </motion.text>
+    </motion.svg>
+  );
+}
+
+function AppleHelloEnterEffect({
+  className,
+  speed = 1,
+}: {
+  className?: string;
+  speed?: number;
+}) {
+  return (
+    <div className={className}>
+      <AppleHelloEnglishEffect className="apple-enter-hello-line" speed={speed} />
+      <AppleClickToEnterEffect className="apple-enter-click-line" speed={speed} />
+    </div>
+  );
+}
+
+export { AppleHelloEnglishEffect, AppleClickToEnterEffect, AppleHelloEnterEffect };

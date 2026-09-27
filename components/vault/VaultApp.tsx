@@ -293,10 +293,10 @@ export default function VaultApp() {
         <header className="cosmic-command-stack vault-single-stack">
           <NeonBorder
             className="vault-single-bar-shell"
-            color1="#fff1a8"
-            color2="#ffd12e"
-            animationType="half"
-            duration={5.5}
+            color1="#fcfabb"
+            color2="#e8e587"
+            animationType="full"
+            duration={6}
           >
             <div className="cosmic-command-bar vault-single-bar">
               <Link href="/" className="cosmic-brand docbox-brand vault-logo-only" aria-label="Return to Chat Library landing page">
