@@ -107,6 +107,7 @@ export default function DocBoxLanding() {
 
       <div className="landing-apple-enter" aria-hidden="true">
         <AppleHelloEnglishEffect className="landing-apple-enter-svg" speed={1.1} />
+        <span className="landing-enter-copy">CLICK TO ENTER</span>
       </div>
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
