@@ -325,3 +325,52 @@
 .landing-enter-copy {
   display: none !important;
 }
+
+
+/* 2026-09-27 definitive two-row Apple entrance layout. */
+.landing-apple-enter {
+  left: 50% !important;
+  top: 62% !important;
+  width: clamp(520px, 46vw, 700px) !important;
+  transform: translate(-50%, -50%) !important;
+  display: grid !important;
+  place-items: center !important;
+  pointer-events: none !important;
+}
+
+.landing-apple-enter-effect {
+  display: grid !important;
+  width: 100% !important;
+  grid-template-rows: auto auto;
+  place-items: center;
+  row-gap: 16px !important;
+}
+
+.landing-apple-enter-effect .apple-enter-hello-line {
+  display: block !important;
+  width: 48% !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.landing-apple-enter-effect .apple-enter-click-line {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.landing-enter-copy {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .landing-apple-enter {
+    top: 64% !important;
+    width: min(88vw, 620px) !important;
+  }
+
+  .landing-apple-enter-effect .apple-enter-hello-line {
+    width: 54% !important;
+  }
+}
