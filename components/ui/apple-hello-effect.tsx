@@ -3,6 +3,8 @@
 import type { TargetAndTransition } from "motion/react";
 import { motion } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 const initialProps: TargetAndTransition = {
   pathLength: 0,
   opacity: 0,
@@ -28,7 +30,7 @@ function AppleHelloEnglishEffect({
 
   return (
     <motion.svg
-      className={["h-20", className].filter(Boolean).join(" ")}
+      className={cn("h-20", className)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 638 200"
       fill="none"
