@@ -28,7 +28,7 @@ function AppleHelloEnglishEffect({
 
   return (
     <motion.svg
-      className={className}
+      className={["h-20", className].filter(Boolean).join(" ")}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 638 200"
       fill="none"
@@ -92,7 +92,7 @@ function AppleClickToEnterEffect({
     <motion.svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1000 150"
+      viewBox="-8 -8 1016 166"
       fill="none"
       stroke="currentColor"
       initial={{ opacity: 1 }}
@@ -171,8 +171,12 @@ function AppleHelloEnterEffect({
 }) {
   return (
     <div className={className}>
-      <AppleHelloEnglishEffect className="apple-enter-hello-line" speed={speed} />
-      <AppleClickToEnterEffect className="apple-enter-click-line" speed={speed} />
+      <div className="apple-enter-line apple-enter-line-hello">
+        <AppleHelloEnglishEffect className="apple-enter-hello-line" speed={speed} />
+      </div>
+      <div className="apple-enter-line apple-enter-line-click">
+        <AppleClickToEnterEffect className="apple-enter-click-line" speed={speed} />
+      </div>
     </div>
   );
 }
