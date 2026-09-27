@@ -7,6 +7,7 @@ type NeonBorderProps = {
   color2?: string;
   animationType?: "none" | "half" | "full";
   duration?: number;
+  animated?: boolean;
   className?: string;
   children: ReactNode;
 };
@@ -24,6 +25,7 @@ export default function NeonBorder({
   color2 = "#ff0a54",
   duration = 6,
   animationType = "half",
+  animated = true,
   className = "",
   children,
 }: NeonBorderProps) {
@@ -34,7 +36,7 @@ export default function NeonBorder({
     "--neon-border-color-2": color2,
   } as CSSProperties;
 
-  const animate = animationType !== "none" ? " animate-neon-border" : "";
+  const animate = animated && animationType !== "none" ? " animate-neon-border" : "";
 
   return (
     <div className={`neon-border-shell ${className}`} style={style}>
