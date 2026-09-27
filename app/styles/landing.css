@@ -317,9 +317,9 @@
 
 .landing-apple-enter-effect .apple-enter-click-line {
   display: block;
-  width: 92%;
+  width: 86%;
   height: auto;
-  margin-top: -14px;
+  margin-top: 8px;
 }
 
 .landing-enter-copy {
