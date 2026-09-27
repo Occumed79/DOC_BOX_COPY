@@ -9,6 +9,8 @@ type MetalButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   metalPreset?: "chromatic" | "silver" | "gold";
   metalStrength?: number;
   metalVariant?: "button" | "circle";
+  metalDisableGlow?: boolean;
+  metalRingCssPx?: number;
 };
 
 function wrapperClassFor(className = "", extra = "") {
@@ -20,26 +22,41 @@ function wrapperClassFor(className = "", extra = "") {
   return classes.join(" ");
 }
 
+function isDenseControl(className = "") {
+  return /\btext-left\b|\bw-full\b|\brounded-2xl\b|\bmin-w-\[/.test(className);
+}
+
 export const MetalButton = forwardRef<HTMLDivElement, MetalButtonProps>(function MetalButton(
   {
     className = "",
     metalFxClassName = "",
     metalVariant = "button",
-    metalStrength = 0.9,
-    metalPreset = "chromatic",
+    metalStrength,
+    metalPreset,
+    metalDisableGlow,
+    metalRingCssPx,
     children,
     ...buttonProps
   },
   ref
 ) {
+  const dense = isDenseControl(className);
+  const circle = metalVariant === "circle";
+  const resolvedPreset = metalPreset || "silver";
+  const resolvedStrength = metalStrength ?? (circle ? 0.30 : dense ? 0.24 : 0.48);
+  const resolvedDisableGlow = metalDisableGlow ?? (circle || dense);
+  const resolvedRingCssPx = metalRingCssPx ?? (dense ? 0.72 : 1);
+
   return (
     <MetalFx
       ref={ref}
       className={wrapperClassFor(className, metalFxClassName)}
-      preset={metalPreset}
+      preset={resolvedPreset}
       theme="dark"
-      strength={metalStrength}
+      strength={resolvedStrength}
       variant={metalVariant}
+      disableGlow={resolvedDisableGlow}
+      ringCssPx={resolvedRingCssPx}
       normalizeHostStyles={false}
     >
       <button className={className} {...buttonProps}>
