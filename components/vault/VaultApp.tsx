@@ -284,10 +284,9 @@ export default function VaultApp() {
         loop
         playsInline
         preload="auto"
-        poster="https://pi-chat-library-assets.floot.app/_cdn/static/9846949d-202f-47f3-b13b-719a4202876b-page4-background-poster.jpg"
         aria-hidden="true"
       >
-        <source src="https://pi-chat-library-assets.floot.app/_cdn/static/2d10efaf-a976-40ba-939c-97b30f6db513-page4-background.mp4" type="video/mp4" />
+        <source src="/occu-med-video-with-logo-centered.mp4" type="video/mp4" />
       </video>
       <div className="cosmic-vault-ui">
         <header className="cosmic-command-stack">
