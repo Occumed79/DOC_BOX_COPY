@@ -81,7 +81,7 @@ function AppleClickToEnterEffect({
   const strokeProps = {
     fill: "none",
     stroke: "currentColor",
-    strokeWidth: 10.5,
+    strokeWidth: 14.8883,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
     initial: initialProps,
@@ -92,7 +92,7 @@ function AppleClickToEnterEffect({
     <motion.svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1000 150"
+      viewBox="0 0 1000 170"
       fill="none"
       stroke="currentColor"
       initial={{ opacity: 1 }}
