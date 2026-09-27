@@ -706,3 +706,68 @@
     grid-column: 1 / -1;
   }
 }
+
+
+/* 2026-09-27 final yellow-neon visibility + larger Occu-Med mark. */
+.docbox-vault-shell .vault-single-bar-shell {
+  padding: 2px !important;
+  filter:
+    drop-shadow(0 0 10px rgba(252,250,187,.48))
+    drop-shadow(0 0 24px rgba(232,229,135,.34))
+    drop-shadow(0 0 42px rgba(232,229,135,.20)) !important;
+}
+
+.docbox-vault-shell .vault-single-bar-shell > .neon-border-one,
+.docbox-vault-shell .vault-single-bar-shell > .neon-border-two {
+  opacity: 1 !important;
+  filter:
+    blur(.45px)
+    drop-shadow(0 0 8px rgba(252,250,187,.86))
+    drop-shadow(0 0 18px rgba(232,229,135,.60)) !important;
+}
+
+.docbox-vault-shell .vault-single-bar {
+  grid-template-columns: 90px auto minmax(260px, 1fr) auto !important;
+  min-height: 74px !important;
+  border-radius: 26px !important;
+}
+
+.docbox-vault-shell .vault-logo-only {
+  width: 80px !important;
+  min-width: 80px !important;
+  height: 58px !important;
+}
+
+.docbox-vault-shell .vault-logo-only .docbox-header-logo {
+  width: 74px !important;
+  height: 54px !important;
+}
+
+.docbox-vault-shell .vault-logo-only .docbox-header-logo img {
+  width: 74px !important;
+  max-width: 74px !important;
+  height: 54px !important;
+}
+
+@media (max-width: 1180px) {
+  .docbox-vault-shell .vault-single-bar {
+    grid-template-columns: 82px minmax(280px, 1fr) auto !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .docbox-vault-shell .vault-single-bar {
+    grid-template-columns: 66px minmax(0,1fr) 44px !important;
+  }
+
+  .docbox-vault-shell .vault-logo-only,
+  .docbox-vault-shell .vault-logo-only .docbox-header-logo {
+    width: 60px !important;
+    min-width: 60px !important;
+  }
+
+  .docbox-vault-shell .vault-logo-only .docbox-header-logo img {
+    width: 58px !important;
+    max-width: 58px !important;
+  }
+}
