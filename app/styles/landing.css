@@ -295,8 +295,8 @@
 /* 2026-09-27 two-line Apple handwriting entrance composition. */
 .landing-apple-enter {
   left: 50% !important;
-  top: 57.5% !important;
-  width: clamp(210px, 20vw, 315px) !important;
+  top: 58% !important;
+  width: clamp(240px, 22vw, 360px) !important;
   transform: translate(-50%, -50%) !important;
   place-items: center !important;
   gap: 0 !important;
@@ -306,22 +306,43 @@
   display: grid;
   width: 100%;
   place-items: center;
-  gap: 0;
+  gap: 10px;
 }
 
-.landing-apple-enter-effect .apple-enter-hello-line {
+.landing-apple-enter-effect .apple-enter-line {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  overflow: visible;
+}
+
+.landing-apple-enter-effect .apple-enter-line-hello {
+  width: 100%;
+}
+
+.landing-apple-enter-effect .apple-enter-line-click {
+  width: 94%;
+}
+
+.landing-apple-enter-effect .apple-enter-hello-line,
+.landing-apple-enter-effect .apple-enter-click-line {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.landing-apple-enter-effect .apple-enter-click-line {
-  display: block;
-  width: 86%;
-  height: auto;
-  margin-top: 8px;
+  overflow: visible;
 }
 
 .landing-enter-copy {
   display: none !important;
+}
+
+@media (max-width: 700px) {
+  .landing-apple-enter {
+    top: 61% !important;
+    width: min(72vw, 320px) !important;
+  }
+
+  .landing-apple-enter-effect {
+    gap: 8px;
+  }
 }
