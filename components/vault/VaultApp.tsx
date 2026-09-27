@@ -6,7 +6,6 @@ import SearchBar from './SearchBar';
 import type { VaultFile } from './file-model';
 import VaultInspector from './VaultInspector';
 import FileGallery from './FileGallery';
-import LuminousBackdrop from './LuminousBackdrop';
 import { ArchiveIcon, CloseIcon, FilesIcon, FolderIcon, PlusIcon, UploadIcon } from './icons';
 
 export interface Folder {
@@ -290,8 +289,6 @@ export default function VaultApp() {
       >
         <source src="https://pi-chat-library-assets.floot.app/_cdn/static/2d10efaf-a976-40ba-939c-97b30f6db513-page4-background.mp4" type="video/mp4" />
       </video>
-      <LuminousBackdrop />
-
       <div className="cosmic-vault-ui">
         <header className="cosmic-command-stack">
           <div className="cosmic-command-bar">
