@@ -100,8 +100,6 @@ function AppleClickToEnterEffect({
       transition={{ duration: 0.5 }}
       {...props}
     >
-      <title>Click to enter</title>
-
       {/* Click */}
       <motion.path
         {...strokeProps}
