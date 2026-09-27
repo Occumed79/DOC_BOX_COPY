@@ -2,10 +2,6 @@
 
 import { useEffect } from 'react';
 
-const MAX_RIPPLES = 5;
-const TRAIL_RIPPLE_LIFETIME = 1350;
-const PRESS_RIPPLE_LIFETIME = 1750;
-
 let landingAudioContext: AudioContext | null = null;
 let landingReverbBuffer: AudioBuffer | null = null;
 let landingReverbSampleRate = 0;
@@ -183,18 +179,12 @@ export default function LandingLiquidEffects() {
     document.body.appendChild(soundButton);
 
     const soundLabel = soundButton.querySelector<HTMLElement>('.landing-sound-label');
-    const layer = document.createElement('div');
-    layer.className = 'landing-liquid-layer';
-    layer.setAttribute('aria-hidden', 'true');
-    landing.appendChild(layer);
 
     let audioUnlocked = landingAudioContext?.state === 'running';
     let soundMuted = landingSoundMuted;
     let soundTravel = 0;
     let lastSound = 0;
     let lastPointer = { x: 0, y: 0, initialized: false };
-    let lastTrail = { x: -1000, y: -1000, time: 0 };
-    const rippleTimers = new Set<number>();
 
     const updateSoundButton = () => {
       soundButton.setAttribute('aria-pressed', soundMuted ? 'true' : 'false');
@@ -203,27 +193,6 @@ export default function LandingLiquidEffects() {
       if (soundLabel) soundLabel.textContent = soundMuted ? 'Unmute' : 'Mute';
     };
     updateSoundButton();
-
-    const addRipple = (x: number, y: number, kind: 'trail' | 'press', angle = 0) => {
-      const ripple = document.createElement('span');
-      ripple.className = `landing-liquid-ripple landing-liquid-ripple-${kind}`;
-      ripple.style.setProperty('--landing-ripple-x', `${x}px`);
-      ripple.style.setProperty('--landing-ripple-y', `${y}px`);
-      ripple.style.setProperty('--landing-ripple-angle', `${angle}rad`);
-      layer.appendChild(ripple);
-
-      const activeRipples = layer.querySelectorAll('.landing-liquid-ripple');
-      if (activeRipples.length > MAX_RIPPLES) {
-        activeRipples[0]?.remove();
-      }
-
-      const lifetime = kind === 'press' ? PRESS_RIPPLE_LIFETIME : TRAIL_RIPPLE_LIFETIME;
-      const timer = window.setTimeout(() => {
-        ripple.remove();
-        rippleTimers.delete(timer);
-      }, lifetime);
-      rippleTimers.add(timer);
-    };
 
     const unlockAndPlay = (intensity: number, brightness: number) => {
       audioUnlocked = true;
@@ -242,16 +211,7 @@ export default function LandingLiquidEffects() {
       const movement = lastPointer.initialized
         ? Math.hypot(x - lastPointer.x, y - lastPointer.y)
         : 0;
-      const angle = lastPointer.initialized
-        ? Math.atan2(y - lastPointer.y, x - lastPointer.x)
-        : 0;
       const brightness = bounds.width > 0 ? x / bounds.width : 0.5;
-
-      const trailDistance = Math.hypot(x - lastTrail.x, y - lastTrail.y);
-      if (trailDistance >= 76 && now - lastTrail.time >= 115) {
-        addRipple(x, y, 'trail', angle);
-        lastTrail = { x, y, time: now };
-      }
 
       if (audioUnlocked && !soundMuted) {
         soundTravel += movement;
@@ -270,7 +230,6 @@ export default function LandingLiquidEffects() {
       const x = event.clientX - bounds.left;
       const y = event.clientY - bounds.top;
       const brightness = bounds.width > 0 ? x / bounds.width : 0.5;
-      addRipple(x, y, 'press');
       unlockAndPlay(0.54, brightness);
     };
 
@@ -280,8 +239,6 @@ export default function LandingLiquidEffects() {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Enter' && event.key !== ' ') return;
-      const bounds = landing.getBoundingClientRect();
-      addRipple(bounds.width / 2, bounds.height / 2, 'press');
       unlockAndPlay(0.54, 0.5);
     };
 
@@ -310,8 +267,6 @@ export default function LandingLiquidEffects() {
       landing.removeEventListener('keydown', handleKeyDown, true);
       landing.removeEventListener('click', handleClick, true);
       soundButton.removeEventListener('click', handleSoundToggle);
-      rippleTimers.forEach(timer => window.clearTimeout(timer));
-      layer.remove();
       soundButton.remove();
     };
   }, []);
