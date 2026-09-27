@@ -290,3 +290,38 @@
     opacity: .88;
   }
 }
+
+
+/* 2026-09-27 two-line Apple handwriting entrance composition. */
+.landing-apple-enter {
+  left: 50% !important;
+  top: 57.5% !important;
+  width: clamp(210px, 20vw, 315px) !important;
+  transform: translate(-50%, -50%) !important;
+  place-items: center !important;
+  gap: 0 !important;
+}
+
+.landing-apple-enter-effect {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  gap: 0;
+}
+
+.landing-apple-enter-effect .apple-enter-hello-line {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.landing-apple-enter-effect .apple-enter-click-line {
+  display: block;
+  width: 92%;
+  height: auto;
+  margin-top: -14px;
+}
+
+.landing-enter-copy {
+  display: none !important;
+}
