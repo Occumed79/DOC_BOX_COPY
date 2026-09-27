@@ -242,14 +242,17 @@
   position: absolute;
   z-index: 9;
   left: 50%;
-  top: 68%;
-  width: clamp(230px, 27vw, 390px);
+  top: 62.5%;
+  display: grid;
+  width: clamp(210px, 22vw, 330px);
+  place-items: center;
+  gap: 7px;
   transform: translate(-50%, -50%);
-  color: rgba(255, 255, 255, 0.94);
+  color: rgba(255, 255, 255, 0.96);
   pointer-events: none;
   filter:
-    drop-shadow(0 0 10px rgba(255,255,255,.20))
-    drop-shadow(0 0 22px rgba(186,230,253,.10));
+    drop-shadow(0 0 9px rgba(255,255,255,.18))
+    drop-shadow(0 0 20px rgba(186,230,253,.08));
 }
 
 .landing-apple-enter-svg {
@@ -258,10 +261,27 @@
   height: auto;
 }
 
+.landing-enter-copy {
+  display: block;
+  margin-top: -2px;
+  color: rgba(255,255,255,.78);
+  font-size: clamp(10px, .82vw, 13px);
+  font-weight: 650;
+  letter-spacing: .26em;
+  line-height: 1;
+  text-align: center;
+  text-indent: .26em;
+  text-shadow: 0 2px 12px rgba(0,0,0,.42);
+}
+
 @media (max-width: 700px) {
   .landing-apple-enter {
-    top: 70%;
-    width: min(76vw, 320px);
+    top: 64%;
+    width: min(65vw, 275px);
+  }
+
+  .landing-enter-copy {
+    font-size: 10px;
   }
 }
 
