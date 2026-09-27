@@ -7,6 +7,7 @@ import type { VaultFile } from './file-model';
 import VaultInspector from './VaultInspector';
 import FileGallery from './FileGallery';
 import { ArchiveIcon, CloseIcon, FilesIcon, FolderIcon, PlusIcon, UploadIcon } from './icons';
+import NeonBorder from '../ui/NeonBorder';
 
 export interface Folder {
   id: string;
@@ -284,68 +285,77 @@ export default function VaultApp() {
         loop
         playsInline
         preload="auto"
-        poster="https://pi-chat-library-assets.floot.app/_cdn/static/9846949d-202f-47f3-b13b-719a4202876b-page4-background-poster.jpg"
         aria-hidden="true"
       >
-        <source src="https://pi-chat-library-assets.floot.app/_cdn/static/2d10efaf-a976-40ba-939c-97b30f6db513-page4-background.mp4" type="video/mp4" />
+        <source src="https://pi-chat-library-assets.floot.app/_cdn/static/75e9ca6a-13fd-4aa6-9675-389d42bc6470-docbox-home-background.mp4" type="video/mp4" />
       </video>
       <div className="cosmic-vault-ui">
-        <header className="cosmic-command-stack">
-          <div className="cosmic-command-bar">
-            <Link href="/" className="cosmic-brand docbox-brand" aria-label="Return to Chat Library landing page">
-              {logoAvailable && (
-                <span className="docbox-header-logo" aria-hidden="true">
-                  <img src="/occu-med-logo.png" alt="" onError={() => setLogoAvailable(false)} />
-                </span>
-              )}
-              <span><strong>Chat Library</strong><small>Occu-Med saved conversation workspace</small></span>
-            </Link>
-            <div className="cosmic-search"><SearchBar onResults={handleSearchResults} onClear={handleSearchClear} onError={reportError} /></div>
-            <button type="button" className="cosmic-upload-button" onClick={openUpload}><UploadIcon /><span>Add Files</span></button>
-          </div>
+        <header className="cosmic-command-stack vault-single-stack">
+          <NeonBorder
+            className="vault-single-bar-shell"
+            color1="#fff1a8"
+            color2="#ffd12e"
+            animationType="half"
+            duration={5.5}
+          >
+            <div className="cosmic-command-bar vault-single-bar">
+              <Link href="/" className="cosmic-brand docbox-brand vault-logo-only" aria-label="Return to Chat Library landing page">
+                {logoAvailable && (
+                  <span className="docbox-header-logo" aria-hidden="true">
+                    <img src="/occu-med-logo.png" alt="" onError={() => setLogoAvailable(false)} />
+                  </span>
+                )}
+              </Link>
 
-          <div className="cosmic-folder-dock" aria-label="Chat Library locations">
-            <div className="cosmic-folder-scroll">
-              <button
-                type="button"
-                className={navView === 'all' && !isSearching && !activeFolder ? 'cosmic-location-pill active' : 'cosmic-location-pill'}
-                onClick={() => navigateTo('all')}
-                onPointerEnter={() => void prefetchView('all', null)}
-              ><FilesIcon /><span>All Files</span><small>{navView === 'all' && !activeFolder ? displayFiles.length : ''}</small></button>
-              <button
-                type="button"
-                className={navView === 'archive' && !isSearching ? 'cosmic-location-pill active' : 'cosmic-location-pill'}
-                onClick={() => navigateTo('archive')}
-                onPointerEnter={() => void prefetchView('archive', null)}
-              ><ArchiveIcon /><span>Archive</span></button>
+              <nav className="vault-inline-nav" aria-label="Chat Library locations">
+                <button
+                  type="button"
+                  className={navView === 'all' && !isSearching && !activeFolder ? 'cosmic-location-pill active' : 'cosmic-location-pill'}
+                  onClick={() => navigateTo('all')}
+                  onPointerEnter={() => void prefetchView('all', null)}
+                ><FilesIcon /><span>All Files</span><small>{navView === 'all' && !activeFolder ? displayFiles.length : ''}</small></button>
 
-              {rootFolders.map(folder => (
-                <div key={folder.id} className={activeFolder === folder.id && !isSearching ? 'cosmic-folder-pill active' : 'cosmic-folder-pill'}>
-                  <button
-                    type="button"
-                    onClick={() => navigateTo('all', folder.id)}
-                    onPointerEnter={() => void prefetchView('all', folder.id)}
-                  ><FolderIcon color="currentColor" /><span>{folder.name}</span><small>{folder.file_count}</small></button>
-                  <button type="button" className="cosmic-folder-delete" onClick={() => void deleteFolder(folder)} aria-label={`Delete ${folder.name}`}><CloseIcon /></button>
-                </div>
-              ))}
+                <button
+                  type="button"
+                  className={navView === 'archive' && !isSearching ? 'cosmic-location-pill active' : 'cosmic-location-pill'}
+                  onClick={() => navigateTo('archive')}
+                  onPointerEnter={() => void prefetchView('archive', null)}
+                ><ArchiveIcon /><span>Archive</span></button>
+
+                {rootFolders.map(folder => (
+                  <div key={folder.id} className={activeFolder === folder.id && !isSearching ? 'cosmic-folder-pill active' : 'cosmic-folder-pill'}>
+                    <button
+                      type="button"
+                      onClick={() => navigateTo('all', folder.id)}
+                      onPointerEnter={() => void prefetchView('all', folder.id)}
+                    ><FolderIcon color="currentColor" /><span>{folder.name}</span><small>{folder.file_count}</small></button>
+                    <button type="button" className="cosmic-folder-delete" onClick={() => void deleteFolder(folder)} aria-label={`Delete ${folder.name}`}><CloseIcon /></button>
+                  </div>
+                ))}
+
+                {showNewFolder ? (
+                  <div className="cosmic-folder-form vault-inline-folder-form">
+                    <input autoFocus value={newFolderName} onChange={event => setNewFolderName(event.target.value)} onKeyDown={event => {
+                      if (event.key === 'Enter') void createFolder();
+                      if (event.key === 'Escape') { setShowNewFolder(false); setNewFolderName(''); }
+                    }} placeholder="Folder name" disabled={folderMutation} />
+                    <button type="button" onClick={() => void createFolder()} disabled={folderMutation || !newFolderName.trim()}>Create</button>
+                    <button type="button" onClick={() => { setShowNewFolder(false); setNewFolderName(''); }} aria-label="Cancel"><CloseIcon /></button>
+                  </div>
+                ) : (
+                  <button type="button" className="cosmic-new-folder-button vault-new-folder-button" onClick={() => setShowNewFolder(true)}><PlusIcon /><span>New Folder</span></button>
+                )}
+              </nav>
+
+              <div className="cosmic-search vault-single-search">
+                <SearchBar onResults={handleSearchResults} onClear={handleSearchClear} onError={reportError} />
+              </div>
+
+              <button type="button" className="cosmic-upload-button vault-single-upload" onClick={openUpload}>
+                <UploadIcon /><span>Add Files</span>
+              </button>
             </div>
-
-            <div className="cosmic-folder-create">
-              {showNewFolder ? (
-                <div className="cosmic-folder-form">
-                  <input autoFocus value={newFolderName} onChange={event => setNewFolderName(event.target.value)} onKeyDown={event => {
-                    if (event.key === 'Enter') void createFolder();
-                    if (event.key === 'Escape') { setShowNewFolder(false); setNewFolderName(''); }
-                  }} placeholder="Folder name" disabled={folderMutation} />
-                  <button type="button" onClick={() => void createFolder()} disabled={folderMutation || !newFolderName.trim()}>Create</button>
-                  <button type="button" onClick={() => { setShowNewFolder(false); setNewFolderName(''); }} aria-label="Cancel"><CloseIcon /></button>
-                </div>
-              ) : (
-                <button type="button" className="cosmic-new-folder-button" onClick={() => setShowNewFolder(true)}><PlusIcon /><span>New Folder</span></button>
-              )}
-            </div>
-          </div>
+          </NeonBorder>
         </header>
 
         {error && <div className="cosmic-status-banner" role="alert"><span>{error}</span><button type="button" onClick={() => setError(null)} aria-label="Dismiss error"><CloseIcon /></button></div>}
