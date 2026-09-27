@@ -821,3 +821,110 @@
 .docbox-vault-shell .vault-single-search .search-control input {
   background: transparent !important;
 }
+
+
+/* 2026-09-27 definitive vault chrome: one translucent bar, one static outer neon. */
+.docbox-vault-shell .vault-single-bar-shell {
+  position: relative !important;
+  padding: 2px !important;
+  overflow: visible !important;
+  border-radius: 28px !important;
+  background: transparent !important;
+  filter:
+    drop-shadow(0 0 8px rgba(252,250,187,.34))
+    drop-shadow(0 0 18px rgba(232,229,135,.24))
+    drop-shadow(0 0 34px rgba(232,229,135,.14)) !important;
+}
+
+.docbox-vault-shell .vault-single-bar-shell > .neon-border-one,
+.docbox-vault-shell .vault-single-bar-shell > .neon-border-two {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+  filter:
+    blur(.35px)
+    drop-shadow(0 0 7px rgba(252,250,187,.82))
+    drop-shadow(0 0 15px rgba(232,229,135,.52)) !important;
+}
+
+.docbox-vault-shell .vault-single-bar-shell > .neon-border-one::before,
+.docbox-vault-shell .vault-single-bar-shell > .neon-border-two::before {
+  width: 100% !important;
+  height: 100% !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+.docbox-vault-shell .vault-single-bar {
+  background: rgba(12, 13, 18, .34) !important;
+  border: 0 !important;
+  backdrop-filter: blur(14px) saturate(112%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(112%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(255,255,255,.025) !important;
+}
+
+.docbox-vault-shell .vault-inline-nav .cosmic-location-pill,
+.docbox-vault-shell .vault-inline-nav .cosmic-new-folder-button,
+.docbox-vault-shell .vault-inline-nav .cosmic-folder-pill > button:first-child,
+.docbox-vault-shell .vault-single-upload,
+.docbox-vault-shell .vault-single-search .search-control {
+  background: rgba(255,255,255,.035) !important;
+  border-color: rgba(255,255,255,.07) !important;
+  backdrop-filter: blur(9px) saturate(108%) !important;
+  -webkit-backdrop-filter: blur(9px) saturate(108%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045) !important;
+  transform: none !important;
+}
+
+.docbox-vault-shell .vault-inline-nav .cosmic-location-pill.active,
+.docbox-vault-shell .vault-inline-nav .cosmic-folder-pill.active > button:first-child {
+  background: rgba(252,250,187,.09) !important;
+  border-color: rgba(252,250,187,.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 12px rgba(232,229,135,.08) !important;
+}
+
+.docbox-vault-shell .vault-inline-nav .cosmic-location-pill:hover,
+.docbox-vault-shell .vault-inline-nav .cosmic-new-folder-button:hover,
+.docbox-vault-shell .vault-inline-nav .cosmic-folder-pill > button:first-child:hover,
+.docbox-vault-shell .vault-single-upload:hover {
+  background: rgba(255,255,255,.065) !important;
+  border-color: rgba(255,255,255,.11) !important;
+  transform: none !important;
+}
+
+.docbox-vault-shell .vault-single-search .search-control,
+.docbox-vault-shell .vault-single-search .search-control.control-glass {
+  min-height: 42px;
+  border-radius: 14px !important;
+  background: rgba(255,255,255,.03) !important;
+  border: 1px solid rgba(255,255,255,.065) !important;
+  backdrop-filter: blur(9px) saturate(108%) !important;
+  -webkit-backdrop-filter: blur(9px) saturate(108%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045) !important;
+}
+
+.docbox-vault-shell .vault-single-search .search-control:focus-within {
+  background: rgba(255,255,255,.05) !important;
+  border-color: rgba(252,250,187,.20) !important;
+  transform: none !important;
+}
+
+.docbox-vault-shell .vault-single-search .search-control input {
+  background: transparent !important;
+}
+
+.docbox-vault-shell .search-neon-shell,
+.docbox-vault-shell .vault-single-search .search-neon-shell {
+  padding: 0 !important;
+  filter: none !important;
+  background: transparent !important;
+}
+
+.docbox-vault-shell .vault-single-search .search-neon-shell > .neon-border-one,
+.docbox-vault-shell .vault-single-search .search-neon-shell > .neon-border-two {
+  display: none !important;
+}
