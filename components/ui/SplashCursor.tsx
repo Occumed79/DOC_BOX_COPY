@@ -24,6 +24,7 @@ interface SplashCursorProps {
   TRANSPARENT?: boolean;
   RAINBOW_MODE?: boolean;
   COLOR?: string;
+  COLORS?: string[];
 }
 
 interface Pointer {
@@ -75,7 +76,8 @@ export default function SplashCursor({
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
   RAINBOW_MODE = true,
-  COLOR = '#ff0000'
+  COLOR = '#ff0000',
+  COLORS = []
 }: SplashCursorProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -102,7 +104,8 @@ export default function SplashCursor({
       BACK_COLOR,
       TRANSPARENT,
       RAINBOW_MODE,
-      COLOR
+      COLOR,
+      COLORS
     };
 
     const { gl, ext } = getWebGLContext(canvas);
@@ -1156,9 +1159,16 @@ export default function SplashCursor({
       return { r: r * 0.15, g: g * 0.15, b: b * 0.15 };
     }
 
+    let fixedPaletteIndex = 0;
+
     function generateColor(): ColorRGB {
       if (!config.RAINBOW_MODE) {
-        return hexToRGB(config.COLOR!);
+        const palette = Array.isArray(config.COLORS) && config.COLORS.length
+          ? config.COLORS
+          : [config.COLOR!];
+        const next = palette[fixedPaletteIndex % palette.length];
+        fixedPaletteIndex += 1;
+        return hexToRGB(next);
       }
       const c = HSVtoRGB(Math.random(), 1.0, 1.0);
       c.r *= 0.15;
@@ -1316,7 +1326,8 @@ export default function SplashCursor({
     BACK_COLOR,
     TRANSPARENT,
     RAINBOW_MODE,
-    COLOR
+    COLOR,
+    COLORS
   ]);
 
   return (
