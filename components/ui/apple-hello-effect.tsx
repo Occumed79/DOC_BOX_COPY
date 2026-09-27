@@ -78,11 +78,21 @@ function AppleClickToEnterEffect({
 }: Props) {
   const calc = (x: number) => x * speed;
 
+  const strokeProps = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 10.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    initial: initialProps,
+    animate: animateProps,
+  };
+
   return (
     <motion.svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 638 120"
+      viewBox="0 0 1000 150"
       fill="none"
       stroke="currentColor"
       initial={{ opacity: 1 }}
@@ -90,33 +100,64 @@ function AppleClickToEnterEffect({
       transition={{ duration: 0.5 }}
       {...props}
     >
-      <title>Click to enter</title>
-      <motion.text
-        x="319"
-        y="78"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fontFamily='"Snell Roundhand","Segoe Script","Brush Script MT",cursive'
-        fontSize="62"
-        fontWeight="400"
-        letterSpacing="0"
-        strokeWidth="2.35"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="transparent"
-        strokeDasharray="1500"
-        initial={{ strokeDashoffset: 1500, opacity: 0 }}
-        animate={{ strokeDashoffset: 0, opacity: 1 }}
+      {/* Click */}
+      <motion.path
+        {...strokeProps}
+        d="M128 34C94 9 48 20 30 55C13 90 38 122 77 119C111 117 137 97 152 73
+           M170 111C180 86 191 56 202 25C207 10 219 10 216 28C212 55 199 85 190 105C204 83 220 70 237 70C253 70 253 84 247 97C243 107 247 116 258 116C270 116 282 105 290 93
+           M300 83C307 70 316 67 321 74C326 82 319 96 316 105C313 114 320 118 328 116C337 114 346 105 352 95
+           M380 79C369 66 345 67 338 86C331 104 344 118 361 117C377 116 391 105 401 91
+           M412 111C421 84 429 56 438 27C443 11 455 12 452 29C448 54 439 78 427 97C442 79 457 70 471 71C486 72 481 85 467 92C480 96 487 111 499 114C509 116 520 107 527 96"
         transition={{
-          duration: calc(2.3),
+          duration: calc(2.25),
           ease: "easeInOut",
-          delay: calc(3.45),
-          opacity: { duration: calc(0.35), delay: calc(3.45) },
+          delay: calc(3.35),
+          opacity: { duration: calc(0.35), delay: calc(3.35) },
+        }}
+      />
+
+      {/* to */}
+      <motion.path
+        {...strokeProps}
+        d="M558 79C575 75 593 74 611 75
+           M590 48C586 68 581 88 577 104C574 115 582 120 593 116C606 112 617 101 624 90
+           M640 92C643 75 658 68 671 74C684 80 686 97 677 109C669 121 652 122 643 113C637 107 637 100 640 92"
+        transition={{
+          duration: calc(1.15),
+          ease: "easeInOut",
+          delay: calc(5.25),
+          opacity: { duration: calc(0.25), delay: calc(5.25) },
+        }}
+      />
+
+      {/* enter */}
+      <motion.path
+        {...strokeProps}
+        d="M717 94C725 76 747 69 760 78C772 86 764 98 748 101C738 103 729 101 724 98C728 115 745 122 762 117C778 113 790 102 797 92
+           M805 115C810 98 815 82 820 72C824 83 823 98 819 110C828 91 842 72 857 72C870 72 870 87 864 101C859 113 864 119 875 117C886 115 897 104 904 94
+           M911 79C928 75 946 74 964 75
+           M943 48C939 68 934 88 930 104C927 115 935 120 946 116C958 112 969 101 976 90"
+        transition={{
+          duration: calc(1.55),
+          ease: "easeInOut",
+          delay: calc(6.05),
+          opacity: { duration: calc(0.3), delay: calc(6.05) },
+        }}
+      />
+
+      <motion.path
+        {...strokeProps}
+        d="M704 117C714 115 720 108 724 101
+           M796 117C806 113 813 106 819 98
+           M975 115C986 111 994 102 998 94"
+        transition={{
+          duration: calc(0.65),
+          ease: "easeOut",
+          delay: calc(7.35),
+          opacity: { duration: calc(0.22), delay: calc(7.35) },
         }}
         onAnimationComplete={onAnimationComplete}
-      >
-        Click to enter
-      </motion.text>
+      />
     </motion.svg>
   );
 }

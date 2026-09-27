@@ -79,9 +79,9 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
     <div className="search-stack">
       <NeonBorder
         className="search-neon-shell"
-        color1={query.trim() ? "#fcfabb" : "transparent"}
-        color2={query.trim() ? "#e8e587" : "transparent"}
-        animationType={query.trim() ? "half" : "none"}
+        color1="#fcfabb"
+        color2="#e8e587"
+        animationType="full"
         duration={6}
       >
         <div className="search-control control-glass">
