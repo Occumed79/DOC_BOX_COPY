@@ -12,6 +12,10 @@ export default function Home() {
         RAINBOW_MODE={false}
         COLORS={LANDING_CURSOR_COLORS}
         COLOR="#6366f1"
+        SPLAT_RADIUS={0.36}
+        SPLAT_FORCE={8200}
+        DENSITY_DISSIPATION={2.35}
+        VELOCITY_DISSIPATION={1.65}
       />
       <LandingLiquidEffects />
     </>
