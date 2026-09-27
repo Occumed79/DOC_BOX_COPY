@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { formatDate, formatSize, typeClass, type VaultFile } from './file-model';
-import MetalButton from "../ui/MetalButton";
 
 interface Props {
   file: VaultFile;
@@ -86,11 +85,11 @@ export default function FilePreviewModal({ file, onClose, initialUrl = null }: P
           </div>
           <div className="modal-actions">
             {url && type !== 'chat' && <a className="toolbar-action prominent" href={url} download={file.original_name}>Download</a>}
-            <MetalButton type="button" className="icon-action" onClick={onClose} aria-label="Close full preview">
+            <button type="button" className="icon-action" onClick={onClose} aria-label="Close full preview">
               <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="m6 6 12 12M18 6 6 18" />
               </svg>
-            </MetalButton>
+            </button>
           </div>
         </div>
 

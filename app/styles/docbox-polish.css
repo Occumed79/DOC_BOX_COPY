@@ -152,73 +152,6 @@
   color: rgba(255,255,255,.54);
 }
 
-/* Metal-button language inspired by Cult UI's animated metal ring. */
-.docbox-vault-shell button {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-.docbox-vault-shell button:not(:disabled)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  padding: 1px;
-  pointer-events: none;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 135deg,
-    rgba(255,255,255,.20),
-    rgba(186,157,240,.82),
-    rgba(245,223,161,.94),
-    rgba(233,166,212,.78),
-    rgba(172,204,236,.86),
-    rgba(255,255,255,.22)
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: .42;
-  transition: opacity 180ms ease, filter 220ms ease;
-}
-
-.docbox-vault-shell button:not(:disabled)::after {
-  content: "";
-  position: absolute;
-  inset: -70% -35%;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.18) 45%, rgba(245,223,161,.12) 50%, transparent 65%);
-  transform: translateX(-55%) rotate(8deg);
-  transition: transform 640ms cubic-bezier(.2,.72,.2,1), opacity 200ms ease;
-  opacity: .28;
-}
-
-.docbox-vault-shell button:not(:disabled):hover::before,
-.docbox-vault-shell button:not(:disabled):focus-visible::before {
-  opacity: .92;
-  filter: drop-shadow(0 0 9px rgba(245,223,161,.22)) drop-shadow(0 0 15px rgba(186,157,240,.18));
-}
-
-.docbox-vault-shell button:not(:disabled):hover::after,
-.docbox-vault-shell button:not(:disabled):focus-visible::after {
-  transform: translateX(62%) rotate(8deg);
-  opacity: .72;
-}
-
-.docbox-vault-shell .cosmic-upload-button,
-.docbox-vault-shell .gallery-upload-action,
-.docbox-vault-shell .cosmic-location-pill.active {
-  color: #24202b !important;
-  background: linear-gradient(135deg, rgba(245,223,161,.92), rgba(233,166,212,.82), rgba(186,157,240,.86)) !important;
-  border-color: rgba(255,255,255,.56) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.7),
-    0 12px 34px rgba(186,157,240,.18),
-    0 0 22px rgba(245,223,161,.15) !important;
-}
-
 /* Yellow-purple neon search animation while a real query is active. */
 .docbox-vault-shell .search-control {
   position: relative;
@@ -263,29 +196,9 @@
   to { --neon-turn: 360deg; }
 }
 
-/* Pixel-flow prompt under the original landing artwork. */
-.landing-pixel-prompt {
-  position: absolute;
-  z-index: 8;
-  left: 50%;
-  bottom: clamp(7%, 9vh, 12%);
-  width: min(560px, 76vw);
-  height: 88px;
-  transform: translateX(-50%);
-  pointer-events: auto;
-  filter: drop-shadow(0 0 9px rgba(255,255,255,.30));
-}
-
-.landing-pixel-prompt canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .vault-video-background { display: none; }
   .docbox-vault-shell { background: linear-gradient(135deg, #756481, #b8a99d 40%, #718095); }
-  .docbox-vault-shell button::after,
   .docbox-vault-shell .search-control.search-active::before,
   .docbox-vault-shell .search-control.search-loading::before {
     animation: none !important;
@@ -362,49 +275,7 @@
 }
 
 
-/* Exact-source effect integration: real metal-fx + Inspira NeonBorder. */
-.docbox-vault-shell button::before,
-.docbox-vault-shell button::after {
-  content: none !important;
-}
-
-.doc-metal-fx {
-  position: relative;
-  isolation: isolate;
-  display: inline-flex;
-  width: fit-content;
-  max-width: 100%;
-  flex-direction: column;
-  align-items: stretch;
-  overflow: visible !important;
-  line-height: 1;
-  vertical-align: middle;
-}
-
-.doc-metal-fx.w-full {
-  display: flex;
-  width: 100%;
-}
-
-.doc-metal-fx.flex-1 {
-  flex: 1 1 0%;
-}
-
-.doc-metal-fx::before {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
-  pointer-events: none;
-  content: "";
-}
-
-.doc-metal-fx > button {
-  position: relative;
-  z-index: 1;
-}
-
+/* Inspira NeonBorder. */
 .search-neon-shell {
   position: relative;
   z-index: 10;
@@ -490,16 +361,3 @@
 }
 
 
-/* 2026-09-27 integration repair */
-.doc-metal-fx::before { content: none !important; }
-.doc-metal-fx {
-  overflow: visible !important;
-}
-.doc-metal-fx > button {
-  width: 100%;
-}
-.landing-pixel-prompt {
-  bottom: 46px !important;
-  height: 92px !important;
-  overflow: visible !important;
-}
