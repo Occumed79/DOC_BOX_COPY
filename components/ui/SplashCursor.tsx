@@ -75,7 +75,7 @@ export default function SplashCursor({
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
-  RAINBOW_MODE = true,
+  RAINBOW_MODE = false,
   COLOR = '#ff0000',
   COLORS = []
 }: SplashCursorProps) {
