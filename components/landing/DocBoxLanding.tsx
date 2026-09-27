@@ -2,7 +2,6 @@
 
 import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { AppleHelloEnterEffect } from '../ui/apple-hello-effect';
 
 const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
 
@@ -104,10 +103,6 @@ export default function DocBoxLanding() {
       >
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
-
-      <div className="landing-apple-enter" aria-hidden="true">
-        <AppleHelloEnterEffect className="landing-apple-enter-effect" speed={1.1} />
-      </div>
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
