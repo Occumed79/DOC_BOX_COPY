@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { VaultFile } from './file-model';
-import NeonBorder from "../ui/NeonBorder";
 
 const QUICK_SEARCHES = ['signed agreement', 'invoice package', 'training materials', 'employee forms'];
 
@@ -77,14 +76,7 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
 
   return (
     <div className="search-stack">
-      <NeonBorder
-        className="search-neon-shell"
-        color1="#fcfabb"
-        color2="#e8e587"
-        animationType="full"
-        duration={6}
-      >
-        <div className="search-control control-glass">
+      <div className="search-control control-glass">
         <span className="search-icon" aria-hidden="true">
           {loading ? (
             <span className="spinner" />
@@ -116,7 +108,6 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
           <kbd className="keyboard-hint">⌘K</kbd>
         )}
         </div>
-      </NeonBorder>
 
       {!query && (
         <div className="search-suggestions" aria-label="Suggested searches">
