@@ -488,3 +488,18 @@
 .docbox-vault-shell .search-control.search-loading::before {
   content: none !important;
 }
+
+
+/* 2026-09-27 integration repair */
+.doc-metal-fx::before { content: none !important; }
+.doc-metal-fx {
+  overflow: visible !important;
+}
+.doc-metal-fx > button {
+  width: 100%;
+}
+.landing-pixel-prompt {
+  bottom: 46px !important;
+  height: 92px !important;
+  overflow: visible !important;
+}
