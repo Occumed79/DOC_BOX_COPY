@@ -40,145 +40,6 @@
   pointer-events: none;
 }
 
-.landing-circuit-glow,
-.landing-light-sweep,
-.landing-particle-system {
-  pointer-events: none;
-}
-
-.landing-circuit-glow {
-  position: absolute;
-  z-index: 2;
-  width: 56vw;
-  height: 56vw;
-  min-width: 560px;
-  min-height: 560px;
-  border: 1px solid rgba(155, 238, 243, 0.24);
-  border-radius: 18%;
-  opacity: 0.18;
-  filter: drop-shadow(0 0 20px rgba(90, 207, 218, 0.72));
-  transform: rotate(45deg);
-  animation: landing-circuit-pulse 7s ease-in-out infinite;
-}
-
-.landing-circuit-glow::before,
-.landing-circuit-glow::after {
-  content: "";
-  position: absolute;
-  inset: 9%;
-  border: 1px solid rgba(215, 242, 240, 0.16);
-  border-radius: inherit;
-}
-
-.landing-circuit-glow::after {
-  inset: 22%;
-  border-color: rgba(58, 141, 154, 0.4);
-}
-
-.circuit-glow-one {
-  top: -39vw;
-  left: -24vw;
-}
-
-.circuit-glow-two {
-  right: -29vw;
-  bottom: -38vw;
-  animation-delay: -3.5s;
-}
-
-.landing-light-sweep {
-  position: absolute;
-  z-index: 3;
-  top: -30vh;
-  width: 18vw;
-  height: 160vh;
-  opacity: 0;
-  background: linear-gradient(90deg, transparent, rgba(115, 227, 235, 0.06), rgba(215, 242, 240, 0.2), transparent);
-  filter: blur(18px);
-  transform: rotate(33deg);
-  mix-blend-mode: screen;
-  animation: landing-sweep 9s ease-in-out infinite;
-}
-
-.landing-light-sweep-one { left: -30vw; }
-.landing-light-sweep-two { left: 36vw; animation-delay: -4.5s; }
-
-.landing-particle-system,
-.landing-particle-layer {
-  position: absolute;
-  inset: 0;
-}
-
-.landing-particle-system {
-  z-index: 5;
-  overflow: hidden;
-  contain: strict;
-  mix-blend-mode: screen;
-}
-
-.landing-particle-layer {
-  transform: translateZ(0);
-}
-
-.dust-layer {
-  opacity: 0.9;
-  filter: saturate(115%);
-}
-
-.firefly-layer {
-  opacity: 1;
-  filter: saturate(130%);
-}
-
-.bloom-layer {
-  opacity: 0.94;
-  filter: saturate(140%);
-}
-
-.landing-particle {
-  position: absolute;
-  top: var(--landing-top);
-  left: var(--landing-left);
-  width: var(--landing-size);
-  height: var(--landing-size);
-  border-radius: 999px;
-  opacity: 0;
-  will-change: transform, opacity;
-  transform: translate3d(0, 0, 0) scale(0.62);
-  animation:
-    landing-particle-drift var(--landing-duration) ease-in-out var(--landing-delay) infinite,
-    landing-particle-twinkle var(--landing-twinkle-duration) ease-in-out var(--landing-delay) infinite;
-}
-
-.landing-particle-dust {
-  background: rgba(199, 245, 247, 0.96);
-  filter: blur(var(--landing-blur));
-  box-shadow:
-    0 0 3px rgba(215, 242, 240, 0.92),
-    0 0 8px rgba(58, 141, 154, 0.58);
-}
-
-.landing-particle-firefly {
-  background: #efffff;
-  filter: blur(var(--landing-blur));
-  box-shadow:
-    0 0 6px rgba(239, 255, 255, 1),
-    0 0 18px rgba(125, 231, 238, 1),
-    0 0 38px rgba(15, 118, 137, 0.84);
-}
-
-.landing-particle-bloom {
-  background: rgba(245, 255, 255, 1);
-  filter: blur(var(--landing-blur));
-  box-shadow:
-    0 0 12px rgba(239, 255, 255, 1),
-    0 0 30px rgba(130, 238, 244, 0.98),
-    0 0 64px rgba(58, 141, 154, 0.9),
-    0 0 110px rgba(15, 76, 92, 0.66);
-}
-
-@keyframes landing-circuit-pulse {
-  0%, 100% { opacity: 0.12; transform: rotate(45deg) scale(0.985); }
   50% { opacity: 0.3; transform: rotate(45deg) scale(1.025); }
 }
 
@@ -242,17 +103,15 @@
   position: absolute;
   z-index: 9;
   left: 50%;
-  top: 62.5%;
+  top: 56.5%;
   display: grid;
-  width: clamp(210px, 22vw, 330px);
+  width: clamp(170px, 17vw, 255px);
   place-items: center;
-  gap: 7px;
+  gap: 4px;
   transform: translate(-50%, -50%);
-  color: rgba(255, 255, 255, 0.96);
+  color: rgba(255,255,255,.97);
   pointer-events: none;
-  filter:
-    drop-shadow(0 0 9px rgba(255,255,255,.18))
-    drop-shadow(0 0 20px rgba(186,230,253,.08));
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.28));
 }
 
 .landing-apple-enter-svg {
@@ -263,30 +122,30 @@
 
 .landing-enter-copy {
   display: block;
-  margin-top: -2px;
-  color: rgba(255,255,255,.78);
-  font-size: clamp(10px, .82vw, 13px);
-  font-weight: 650;
-  letter-spacing: .26em;
+  margin-top: -1px;
+  color: rgba(255,255,255,.84);
+  font-size: clamp(9px, .68vw, 11px);
+  font-weight: 700;
+  letter-spacing: .23em;
   line-height: 1;
   text-align: center;
-  text-indent: .26em;
-  text-shadow: 0 2px 12px rgba(0,0,0,.42);
+  text-indent: .23em;
+  text-shadow: 0 2px 10px rgba(0,0,0,.45);
 }
 
 @media (max-width: 700px) {
   .landing-apple-enter {
-    top: 64%;
-    width: min(65vw, 275px);
+    top: 58%;
+    width: min(52vw, 220px);
   }
 
   .landing-enter-copy {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .landing-apple-enter {
-    opacity: .88;
+    opacity: .92;
   }
 }
