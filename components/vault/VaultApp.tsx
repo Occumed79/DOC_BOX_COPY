@@ -296,6 +296,7 @@ export default function VaultApp() {
             color1="#fcfabb"
             color2="#e8e587"
             animationType="full"
+            animated={false}
             duration={6}
           >
             <div className="cosmic-command-bar vault-single-bar">
