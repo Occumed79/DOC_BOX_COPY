@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { type VaultFile, formatDate, formatSize } from './file-model';
 import { CloseIcon } from './icons';
+import MetalButton from "../ui/MetalButton";
 
 async function readError(response: Response, fallback: string) {
   try {
@@ -79,7 +80,7 @@ export default function VaultInspector({ file, onClose, onUpdate, onRemove, onEr
     <aside className="stage-inspector" aria-label={`Details for ${file.name}`}>
       <header className="stage-inspector-header">
         <div><p>Inspector</p><h2 title={file.name}>{file.name}</h2><span>{file.original_name}</span></div>
-        <button type="button" className="stage-icon-button" onClick={onClose} aria-label="Close inspector"><CloseIcon /></button>
+        <MetalButton type="button" className="stage-icon-button" onClick={onClose} aria-label="Close inspector"><CloseIcon /></MetalButton>
       </header>
 
       <div className="stage-inspector-scroll">
@@ -99,19 +100,19 @@ export default function VaultInspector({ file, onClose, onUpdate, onRemove, onEr
         </section>
 
         <section className="stage-inspector-section">
-          <div className="stage-section-heading"><h3>Notes</h3>{!editNotes && <button type="button" onClick={() => setEditNotes(true)}>{file.notes ? 'Edit' : 'Add'}</button>}</div>
+          <div className="stage-section-heading"><h3>Notes</h3>{!editNotes && <MetalButton type="button" onClick={() => setEditNotes(true)}>{file.notes ? 'Edit' : 'Add'}</MetalButton>}</div>
           {editNotes ? (
             <div className="stage-notes-editor">
               <textarea autoFocus rows={6} value={notes} onChange={event => setNotes(event.target.value)} placeholder="Add context for this file…" />
-              <div><button type="button" className="stage-action prominent" onClick={() => void saveNotes()} disabled={pending}>Save</button><button type="button" className="stage-action" onClick={() => { setNotes(file.notes || ''); setEditNotes(false); }}>Cancel</button></div>
+              <div><MetalButton type="button" className="stage-action prominent" onClick={() => void saveNotes()} disabled={pending}>Save</MetalButton><MetalButton type="button" className="stage-action" onClick={() => { setNotes(file.notes || ''); setEditNotes(false); }}>Cancel</MetalButton></div>
             </div>
           ) : <p className={file.notes ? 'stage-notes-copy' : 'stage-muted-copy'}>{file.notes || 'No notes yet.'}</p>}
         </section>
       </div>
 
       <footer className="stage-inspector-footer">
-        <button type="button" className="stage-action" onClick={() => void changeArchiveState()} disabled={pending}>{file.is_archived ? 'Restore File' : 'Archive File'}</button>
-        <button type="button" className="stage-action destructive" onClick={() => void deleteFile()} disabled={pending}>Delete</button>
+        <MetalButton type="button" className="stage-action" onClick={() => void changeArchiveState()} disabled={pending}>{file.is_archived ? 'Restore File' : 'Archive File'}</MetalButton>
+        <MetalButton type="button" className="stage-action destructive" onClick={() => void deleteFile()} disabled={pending}>Delete</MetalButton>
       </footer>
     </aside>
   );

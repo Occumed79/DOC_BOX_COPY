@@ -4,6 +4,7 @@ import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useDropzone, type FileRejection } from 'react-dropzone';
 import { formatDate, formatSize, type VaultFile } from './file-model';
 import FilePreviewModal from './FilePreviewModal';
+import MetalButton from "../ui/MetalButton";
 
 const ACCEPTED = {
   'application/pdf': ['.pdf'],
@@ -182,10 +183,10 @@ export default function FileGallery({
               <h2 id="staged-gallery-title">{queued.length} {queued.length === 1 ? 'file' : 'files'} staged for {folderName || 'All Files'}</h2>
             </div>
             <div className="staging-actions">
-              <button type="button" className="gallery-secondary-action" onClick={() => setQueued([])} disabled={uploading}>Clear</button>
-              <button type="button" className="gallery-upload-action" onClick={() => void uploadQueued()} disabled={uploading}>
+              <MetalButton type="button" className="gallery-secondary-action" onClick={() => setQueued([])} disabled={uploading}>Clear</MetalButton>
+              <MetalButton type="button" className="gallery-upload-action" onClick={() => void uploadQueued()} disabled={uploading}>
                 {uploading ? <><span className="spinner" /> Uploading…</> : `Upload ${queued.length}`}
-              </button>
+              </MetalButton>
             </div>
           </header>
 
@@ -272,7 +273,7 @@ const StoredPreviewTile = memo(function StoredPreviewTile({ file, onOpen, onDeta
       </div>
       <footer className="file-preview-caption">
         <div><strong title={file.name}>{file.name}</strong><span>{type.toUpperCase()} · {formatSize(file.size_bytes)} · {formatDate(file.upload_date)}</span></div>
-        <button type="button" onClick={onDetails} aria-label={`Show details for ${file.name}`}>Details</button>
+        <MetalButton type="button" onClick={onDetails} aria-label={`Show details for ${file.name}`}>Details</MetalButton>
       </footer>
     </article>
   );
@@ -346,7 +347,7 @@ function LocalPreviewTile({ file, disabled, onRemove }: { file: File; disabled: 
       </div>
       <footer className="file-preview-caption">
         <div><strong title={file.name}>{file.name}</strong><span>{type.toUpperCase()} · {formatSize(file.size)}</span></div>
-        <button type="button" onClick={onRemove} disabled={disabled} aria-label={`Remove ${file.name}`}>Remove</button>
+        <MetalButton type="button" onClick={onRemove} disabled={disabled} aria-label={`Remove ${file.name}`}>Remove</MetalButton>
       </footer>
     </article>
   );

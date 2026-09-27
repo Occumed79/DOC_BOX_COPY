@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { VaultFile } from './file-model';
+import MetalButton from "../ui/MetalButton";
+import NeonBorder from "../ui/NeonBorder";
 
 const QUICK_SEARCHES = ['signed agreement', 'invoice package', 'training materials', 'employee forms'];
 
@@ -76,7 +78,14 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
 
   return (
     <div className="search-stack">
-      <div className={`search-control control-glass${query.trim() ? ' search-active' : ''}${loading ? ' search-loading' : ''}`}>
+      <NeonBorder
+        className="search-neon-shell"
+        color1={query.trim() ? "#f4d35e" : "transparent"}
+        color2={query.trim() ? "#9b5de5" : "transparent"}
+        animationType={query.trim() ? "half" : "none"}
+        duration={6}
+      >
+        <div className="search-control control-glass">
         <span className="search-icon" aria-hidden="true">
           {loading ? (
             <span className="spinner" />
@@ -99,26 +108,27 @@ export default function SearchBar({ onResults, onClear, onError }: Props) {
           spellCheck="false"
         />
         {query ? (
-          <button type="button" className="search-clear" onClick={() => setQuery('')} aria-label="Clear search">
+          <MetalButton type="button" className="search-clear" onClick={() => setQuery('')} aria-label="Clear search">
             <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="m6 6 12 12M18 6 6 18" />
             </svg>
-          </button>
+          </MetalButton>
         ) : (
           <kbd className="keyboard-hint">⌘K</kbd>
         )}
-      </div>
+        </div>
+      </NeonBorder>
 
       {!query && (
         <div className="search-suggestions" aria-label="Suggested searches">
           <span>Try:</span>
           {QUICK_SEARCHES.map(value => (
-            <button key={value} type="button" onClick={() => {
+            <MetalButton key={value} type="button" onClick={() => {
               setQuery(value);
               inputRef.current?.focus();
             }}>
               {value}
-            </button>
+            </MetalButton>
           ))}
         </div>
       )}

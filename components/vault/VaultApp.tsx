@@ -8,6 +8,7 @@ import VaultInspector from './VaultInspector';
 import FileGallery from './FileGallery';
 import LuminousBackdrop from './LuminousBackdrop';
 import { ArchiveIcon, CloseIcon, FilesIcon, FolderIcon, PlusIcon, UploadIcon } from './icons';
+import MetalButton from "../ui/MetalButton";
 
 export interface Folder {
   id: string;
@@ -304,32 +305,32 @@ export default function VaultApp() {
               <span><strong>Chat Library</strong><small>Occu-Med saved conversation workspace</small></span>
             </Link>
             <div className="cosmic-search"><SearchBar onResults={handleSearchResults} onClear={handleSearchClear} onError={reportError} /></div>
-            <button type="button" className="cosmic-upload-button" onClick={openUpload}><UploadIcon /><span>Add Files</span></button>
+            <MetalButton type="button" className="cosmic-upload-button" onClick={openUpload}><UploadIcon /><span>Add Files</span></MetalButton>
           </div>
 
           <div className="cosmic-folder-dock" aria-label="Chat Library locations">
             <div className="cosmic-folder-scroll">
-              <button
+              <MetalButton
                 type="button"
                 className={navView === 'all' && !isSearching && !activeFolder ? 'cosmic-location-pill active' : 'cosmic-location-pill'}
                 onClick={() => navigateTo('all')}
                 onPointerEnter={() => void prefetchView('all', null)}
-              ><FilesIcon /><span>All Files</span><small>{navView === 'all' && !activeFolder ? displayFiles.length : ''}</small></button>
-              <button
+              ><FilesIcon /><span>All Files</span><small>{navView === 'all' && !activeFolder ? displayFiles.length : ''}</small></MetalButton>
+              <MetalButton
                 type="button"
                 className={navView === 'archive' && !isSearching ? 'cosmic-location-pill active' : 'cosmic-location-pill'}
                 onClick={() => navigateTo('archive')}
                 onPointerEnter={() => void prefetchView('archive', null)}
-              ><ArchiveIcon /><span>Archive</span></button>
+              ><ArchiveIcon /><span>Archive</span></MetalButton>
 
               {rootFolders.map(folder => (
                 <div key={folder.id} className={activeFolder === folder.id && !isSearching ? 'cosmic-folder-pill active' : 'cosmic-folder-pill'}>
-                  <button
+                  <MetalButton
                     type="button"
                     onClick={() => navigateTo('all', folder.id)}
                     onPointerEnter={() => void prefetchView('all', folder.id)}
-                  ><FolderIcon color="currentColor" /><span>{folder.name}</span><small>{folder.file_count}</small></button>
-                  <button type="button" className="cosmic-folder-delete" onClick={() => void deleteFolder(folder)} aria-label={`Delete ${folder.name}`}><CloseIcon /></button>
+                  ><FolderIcon color="currentColor" /><span>{folder.name}</span><small>{folder.file_count}</small></MetalButton>
+                  <MetalButton type="button" className="cosmic-folder-delete" onClick={() => void deleteFolder(folder)} aria-label={`Delete ${folder.name}`}><CloseIcon /></MetalButton>
                 </div>
               ))}
             </div>
@@ -341,17 +342,17 @@ export default function VaultApp() {
                     if (event.key === 'Enter') void createFolder();
                     if (event.key === 'Escape') { setShowNewFolder(false); setNewFolderName(''); }
                   }} placeholder="Folder name" disabled={folderMutation} />
-                  <button type="button" onClick={() => void createFolder()} disabled={folderMutation || !newFolderName.trim()}>Create</button>
-                  <button type="button" onClick={() => { setShowNewFolder(false); setNewFolderName(''); }} aria-label="Cancel"><CloseIcon /></button>
+                  <MetalButton type="button" onClick={() => void createFolder()} disabled={folderMutation || !newFolderName.trim()}>Create</MetalButton>
+                  <MetalButton type="button" onClick={() => { setShowNewFolder(false); setNewFolderName(''); }} aria-label="Cancel"><CloseIcon /></MetalButton>
                 </div>
               ) : (
-                <button type="button" className="cosmic-new-folder-button" onClick={() => setShowNewFolder(true)}><PlusIcon /><span>New Folder</span></button>
+                <MetalButton type="button" className="cosmic-new-folder-button" onClick={() => setShowNewFolder(true)}><PlusIcon /><span>New Folder</span></MetalButton>
               )}
             </div>
           </div>
         </header>
 
-        {error && <div className="cosmic-status-banner" role="alert"><span>{error}</span><button type="button" onClick={() => setError(null)} aria-label="Dismiss error"><CloseIcon /></button></div>}
+        {error && <div className="cosmic-status-banner" role="alert"><span>{error}</span><MetalButton type="button" onClick={() => setError(null)} aria-label="Dismiss error"><CloseIcon /></MetalButton></div>}
 
         <main className={selectedFile && !stagingActive ? 'gallery-workspace has-inspector' : 'gallery-workspace'}>
           <section className="gallery-main-column" aria-labelledby="current-view-title">
