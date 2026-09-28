@@ -4,7 +4,6 @@ import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
-const LANDING_ENTER_OVERLAY = 'https://pi-chat-library-assets.floot.app/_cdn/static/1dd5eeb0-19b3-49e8-8a6b-10747118c095-hello-enter-alpha-cropped.webm';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
@@ -96,6 +95,7 @@ export default function DocBoxLanding() {
         className="docbox-landing-art"
         autoPlay
         muted
+        loop
         playsInline
         preload="auto"
         aria-hidden="true"
@@ -104,18 +104,58 @@ export default function DocBoxLanding() {
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
 
-      <video
+      <svg
         className="landing-enter-overlay"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        tabIndex={-1}
+        viewBox="0 0 720 280"
+        role="img"
+        aria-label="hello — click to enter"
       >
-        <source src={LANDING_ENTER_OVERLAY} type="video/webm" />
-      </video>
+        <defs>
+          <mask id="hello-write-mask">
+            <rect x="0" y="0" width="0" height="135" fill="white">
+              <animate
+                attributeName="width"
+                from="0"
+                to="720"
+                dur="1.65s"
+                begin="0.2s"
+                fill="freeze"
+              />
+            </rect>
+          </mask>
+          <mask id="enter-write-mask">
+            <rect x="0" y="128" width="0" height="152" fill="white">
+              <animate
+                attributeName="width"
+                from="0"
+                to="720"
+                dur="2.25s"
+                begin="1.65s"
+                fill="freeze"
+              />
+            </rect>
+          </mask>
+        </defs>
+
+        <text
+          className="landing-handwriting landing-handwriting-hello"
+          x="360"
+          y="118"
+          textAnchor="middle"
+          mask="url(#hello-write-mask)"
+        >
+          hello
+        </text>
+        <text
+          className="landing-handwriting landing-handwriting-enter"
+          x="360"
+          y="226"
+          textAnchor="middle"
+          mask="url(#enter-write-mask)"
+        >
+          click to enter
+        </text>
+      </svg>
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />

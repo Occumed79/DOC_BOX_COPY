@@ -44,16 +44,33 @@
 .landing-enter-overlay {
   position: absolute;
   left: 50%;
-  top: 66%;
+  top: 67%;
   z-index: 9;
   display: block;
-  width: clamp(260px, 32vw, 520px);
+  width: clamp(320px, 36vw, 590px);
   height: auto;
   transform: translate(-50%, -50%);
-  object-fit: contain;
-  mix-blend-mode: darken;
+  overflow: visible;
   pointer-events: none;
   user-select: none;
+}
+
+.landing-handwriting {
+  fill: #7c49df;
+  stroke: #7c49df;
+  stroke-width: 0.8px;
+  paint-order: stroke fill;
+  font-family: "Snell Roundhand", "Segoe Script", "Brush Script MT", cursive;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.landing-handwriting-hello {
+  font-size: 126px;
+}
+
+.landing-handwriting-enter {
+  font-size: 69px;
 }
 
 .landing-circuit-glow,
