@@ -4,6 +4,7 @@ import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
+const LANDING_ENTER_OVERLAY = '/_cdn/static/8f9d6f97-db3a-4485-bdbb-d7af23e84f45-hello-click-enter-overlay.webm';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
@@ -102,6 +103,18 @@ export default function DocBoxLanding() {
         tabIndex={-1}
       >
         <source src={LANDING_VIDEO} type="video/mp4" />
+      </video>
+
+      <video
+        className="landing-enter-overlay"
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <source src={LANDING_ENTER_OVERLAY} type="video/webm" />
       </video>
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
