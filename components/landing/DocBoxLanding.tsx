@@ -96,7 +96,6 @@ export default function DocBoxLanding() {
         className="docbox-landing-art"
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
         aria-hidden="true"
