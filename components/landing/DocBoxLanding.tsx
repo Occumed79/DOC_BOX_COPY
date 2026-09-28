@@ -105,13 +105,18 @@ export default function DocBoxLanding() {
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
 
-      <img
+      <video
         className="landing-enter-overlay"
-        src={LANDING_ENTER_OVERLAY}
-        alt=""
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
         aria-hidden="true"
-        draggable="false"
-      />
+        tabIndex={-1}
+      >
+        <source src={LANDING_ENTER_OVERLAY} type="video/webm" />
+      </video>
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
