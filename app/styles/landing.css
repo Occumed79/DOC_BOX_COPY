@@ -43,14 +43,16 @@
 
 .landing-enter-overlay {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 67%;
   z-index: 9;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  width: clamp(340px, 38vw, 640px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
   pointer-events: none;
+  user-select: none;
 }
 
 .landing-circuit-glow,
@@ -247,5 +249,12 @@
 
   .landing-particle {
     opacity: 0.42;
+  }
+}
+
+@media (max-width: 700px) {
+  .landing-enter-overlay {
+    top: 69%;
+    width: min(72vw, 520px);
   }
 }

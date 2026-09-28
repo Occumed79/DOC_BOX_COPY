@@ -4,7 +4,7 @@ import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
-const LANDING_ENTER_OVERLAY = 'https://pi-chat-library-assets.floot.app/_cdn/static/8f9d6f97-db3a-4485-bdbb-d7af23e84f45-hello-click-enter-overlay.webm';
+const LANDING_ENTER_OVERLAY = 'https://pi-chat-library-assets.floot.app/_cdn/static/1d4e785d-a7a8-424a-8d99-0f1b80d71bcf-hello-enter-alpha-cropped.webp';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
@@ -105,17 +105,13 @@ export default function DocBoxLanding() {
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
 
-      <video
+      <img
         className="landing-enter-overlay"
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
+        src={LANDING_ENTER_OVERLAY}
+        alt=""
         aria-hidden="true"
-        tabIndex={-1}
-      >
-        <source src={LANDING_ENTER_OVERLAY} type="video/webm" />
-      </video>
+        draggable="false"
+      />
 
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
