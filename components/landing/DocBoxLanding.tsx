@@ -104,59 +104,6 @@ export default function DocBoxLanding() {
         <source src={LANDING_VIDEO} type="video/mp4" />
       </video>
 
-      <svg
-        className="landing-enter-overlay"
-        viewBox="0 0 720 280"
-        role="img"
-        aria-label="hello — click to enter"
-      >
-        <defs>
-          <mask id="hello-write-mask">
-            <rect x="0" y="0" width="0" height="135" fill="white">
-              <animate
-                attributeName="width"
-                from="0"
-                to="720"
-                dur="1.65s"
-                begin="0.2s"
-                fill="freeze"
-              />
-            </rect>
-          </mask>
-          <mask id="enter-write-mask">
-            <rect x="0" y="128" width="0" height="152" fill="white">
-              <animate
-                attributeName="width"
-                from="0"
-                to="720"
-                dur="2.25s"
-                begin="1.65s"
-                fill="freeze"
-              />
-            </rect>
-          </mask>
-        </defs>
-
-        <text
-          className="landing-handwriting landing-handwriting-hello"
-          x="360"
-          y="118"
-          textAnchor="middle"
-          mask="url(#hello-write-mask)"
-        >
-          hello
-        </text>
-        <text
-          className="landing-handwriting landing-handwriting-enter"
-          x="360"
-          y="226"
-          textAnchor="middle"
-          mask="url(#enter-write-mask)"
-        >
-          click to enter
-        </text>
-      </svg>
-
       <div className="landing-circuit-glow circuit-glow-one" aria-hidden="true" />
       <div className="landing-circuit-glow circuit-glow-two" aria-hidden="true" />
       <div className="landing-light-sweep landing-light-sweep-one" aria-hidden="true" />
