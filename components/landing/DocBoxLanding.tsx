@@ -4,7 +4,7 @@ import { useEffect, type CSSProperties, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 const LANDING_VIDEO = '/occu-med-video-with-logo-centered.mp4';
-const LANDING_ENTER_OVERLAY = 'https://pi-chat-library-assets.floot.app/_cdn/static/1d4e785d-a7a8-424a-8d99-0f1b80d71bcf-hello-enter-alpha-cropped.webp';
+const LANDING_ENTER_OVERLAY = 'https://pi-chat-library-assets.floot.app/_cdn/static/1dd5eeb0-19b3-49e8-8a6b-10747118c095-hello-enter-alpha-cropped.webm';
 
 type ParticleKind = 'dust' | 'firefly' | 'bloom';
 
