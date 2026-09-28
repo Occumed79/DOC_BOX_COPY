@@ -51,6 +51,7 @@
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: contain;
+  mix-blend-mode: darken;
   pointer-events: none;
   user-select: none;
 }
